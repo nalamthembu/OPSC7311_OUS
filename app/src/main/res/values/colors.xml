@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="BackgroundGrey">#4d4d4d</color>
+    <color name="AccentOrange">#e0a587</color>
+    <color name="CustomGreen">#adb7b1</color>
+    <color name="ProjectBlue">#7798bc</color>
+    <color name="ProjectYellow">#f5cc67</color>
+    <color name="ProjectPink">#d9b8c8</color>
+    <color name="LightGrey">#d3d5d8</color>
+    <color name="PriorityRed">#ff0000</color>
+    <color name="PriorityOrange">#ec7029</color>
+    <color name="PriorityGreen">#007236</color>
+    <color name="PieChartRed">#ff3131</color>
+    <color name="PieChartBlue">#5ce1e6</color>
+    <color name="PieChartOrange">#ffbd59</color>
+    <color name="Tokoloshe">#815868</color>
+
 </resources>
