@@ -7,16 +7,66 @@
     android:background="@color/BackgroundGrey"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnLogIn"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/imgLogo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        android:background="@drawable/my_button_bg"
-        android:text="LOGIN"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+        android:src = "@drawable/ic_launcher_foreground"
+        android:padding="100dp"
         />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtUsername"
+        android:layout_below="@id/imgLogo"
+        android:hint="Username"
+        android:background="@drawable/txt_bg"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="20dp">
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtUsername"
+        android:id="@+id/txtPassword"
+        android:hint="Password"
+        android:background="@drawable/txt_bg"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="20dp">
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtVForgetPassword"
+        android:layout_below="@id/txtPassword"
+        android:text="Forgot password?"
+        android:textColor="@color/white"
+        android:layout_alignRight="@id/txtPassword"
+        android:layout_margin="5dp"
+        />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_login"
+        android:layout_below="@id/txtVForgetPassword"
+        android:text="Login"
+        android:background="@drawable/button_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:textColor="@color/white"
+        />
+
+
 
 </RelativeLayout>
