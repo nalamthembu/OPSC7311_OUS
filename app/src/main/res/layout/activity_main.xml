@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/imgLogo"
         android:layout_centerHorizontal="true"
-        android:src = "@drawable/ic_launcher_foreground"
-        android:padding="100dp"
+        android:src = "@drawable/ht_logo"
+        android:padding="50dp"
         />
 
     <EditText

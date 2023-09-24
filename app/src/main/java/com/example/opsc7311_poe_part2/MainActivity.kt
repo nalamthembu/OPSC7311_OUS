@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity()
 {
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity()
         btnLogin?.setOnClickListener()
         {
             startActivity(Intent(this, HomeScreenActivity::class.java))
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
         }
     }
 }
