@@ -30,17 +30,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="-1dp"
         android:layout_marginTop="-1dp"
+        android:background="@color/BackgroundGrey"
         tools:srcCompat="@color/BackgroundGrey" />
 
     <ImageView
         android:id="@+id/Line"
-        android:layout_width="390dp"
+        android:layout_width="330dp"
         android:layout_height="5dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="138dp"
+        android:background="@color/AccentOrange"
         tools:srcCompat="@color/AccentOrange" />
 
     <ImageView
@@ -51,7 +53,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="321dp"
+        android:background="@color/AccentOrange"
         tools:srcCompat="@color/AccentOrange" />
 
     <TextView
@@ -67,18 +70,6 @@
         android:textColor="@color/LightGrey"
         android:textSize="25dp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="75dp"
-        android:layout_height="79dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="9dp"
-        android:src="@tools:sample/avatars"
-        app:srcCompat="@drawable/ht_logo" />
-
     <TextView
         android:id="@+id/Time_Worked"
         android:layout_width="wrap_content"
@@ -89,7 +80,41 @@
         android:layout_marginStart="128dp"
         android:layout_marginTop="329dp"
         android:text="You have worked for 0h"
+        android:textStyle="bold"
         android:textColor="@color/LightGrey"
         android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="88dp"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp"
+        app:srcCompat="@drawable/ht_logo" />
+
+    <ImageButton
+        android:id="@+id/Add_Project"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="109dp"
+        android:layout_marginEnd="5dp"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/add_button" />
+
+    <ImageButton
+        android:id="@+id/hamburger_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="362dp"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/add_button" />
 
 </RelativeLayout>
