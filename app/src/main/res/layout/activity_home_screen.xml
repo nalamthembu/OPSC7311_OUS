@@ -16,10 +16,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="-29dp"
-        android:layout_marginTop="302dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginStart="-38dp"
+        android:layout_marginTop="313dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="34dp"
         app:srcCompat="@drawable/tokoloshe" />
 
     <ImageView
@@ -31,5 +31,65 @@
         android:layout_marginStart="-1dp"
         android:layout_marginTop="-1dp"
         tools:srcCompat="@color/BackgroundGrey" />
+
+    <ImageView
+        android:id="@+id/Line"
+        android:layout_width="390dp"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="138dp"
+        tools:srcCompat="@color/AccentOrange" />
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="390dp"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="316dp"
+        tools:srcCompat="@color/AccentOrange" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="98dp"
+        android:text="Projects"
+        android:textColor="@color/LightGrey"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="75dp"
+        android:layout_height="79dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="9dp"
+        android:src="@tools:sample/avatars"
+        app:srcCompat="@drawable/ht_logo" />
+
+    <TextView
+        android:id="@+id/Time_Worked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="329dp"
+        android:text="You have worked for 0h"
+        android:textColor="@color/LightGrey"
+        android:textSize="15dp" />
 
 </RelativeLayout>
