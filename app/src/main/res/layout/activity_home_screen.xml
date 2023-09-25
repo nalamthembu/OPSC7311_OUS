@@ -111,10 +111,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="362dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="360dp"
         android:background="#00FFFFFF"
-        app:srcCompat="@drawable/add_button" />
+        app:srcCompat="@drawable/baseline_reorder_24" />
 
 </RelativeLayout>
