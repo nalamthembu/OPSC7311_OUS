@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100pt"
+    android:layout_height="150pt"
+    android:background="@drawable/popup_border"
+    android:orientation="vertical"
+    android:rotation="0"
+    android:rotationX="0"
+    android:rotationY="0">
+
+    <Button
+        android:id="@+id/btn_create_project"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/button_bg"
+        android:text="Create"
+        android:textColor="@color/white"/>
+
+</LinearLayout>
