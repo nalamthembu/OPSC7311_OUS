@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -27,6 +28,13 @@ class HomeScreenActivity : AppCompatActivity()
         burger_menu.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navigation.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.item_inbox -> Toast.makeText(applicationContext, "Clicked Inbox",Toast.LENGTH_SHORT).show()
+            }
+            true
+        }
 
     }
 

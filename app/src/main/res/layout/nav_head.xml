@@ -4,15 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="16dp"
-    android:layout_marginStart="16dp"
     android:background="@color/BackgroundGrey">
 
     <ImageView
         android:id="@+id/ivHTLogo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/ht_logo"/>
-    
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ht_logo" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

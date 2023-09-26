@@ -111,18 +111,6 @@
             android:background="#00FFFFFF"
             app:srcCompat="@drawable/add_button" />
 
-        <ImageButton
-            android:id="@+id/hamburger_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="360dp"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/baseline_reorder_24" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myRecycler"

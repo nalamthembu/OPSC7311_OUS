@@ -27,7 +27,6 @@
             android:id="@+id/project_icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@tools:sample/avatars"
             android:translationX="35dp"
             android:translationY="5dp" />
 
