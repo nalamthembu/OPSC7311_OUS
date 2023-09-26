@@ -12,10 +12,15 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 
 class HomeScreenActivity : AppCompatActivity()
 {
+    //Recyclerview vars
+    var rv: RecyclerView? = null
+    val dataList = ArrayList<String>()
+    
     //Burger Menu Vars
     lateinit var burger_menu: ActionBarDrawerToggle
 
@@ -33,6 +38,7 @@ class HomeScreenActivity : AppCompatActivity()
 
         //Create Project Sets
         add_project = findViewById(R.id.Add_Project)
+        rv = findViewById(R.id.myRecycler)
 
         //Burger Menu Action Bar
         burger_menu = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
