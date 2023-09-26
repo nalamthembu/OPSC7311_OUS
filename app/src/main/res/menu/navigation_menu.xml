@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item
+        android:id="@+id/item_inbox"
+        android:title="Inbox" />
+    <item
+        android:id="@+id/item_notifs"
+        android:title="Notifications" />
+    <item
+        android:id="@+id/item_timeline_view"
+        android:title="Timeline View" />
+    <item
+        android:id="@+id/item_daily_goals"
+        android:title="Daily Goals" />
+    <item
+        android:id="@+id/item_settings"
+        android:title="Settings" />
+    <item
+        android:id="@+id/item_help"
+        android:title="Help" />
+    <item
+        android:id="@+id/item_about_us"
+        android:title="About Us" />
+
+</menu>

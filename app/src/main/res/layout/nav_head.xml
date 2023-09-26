@@ -2,7 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="16dp"
+    android:layout_marginStart="16dp"
+    android:background="@color/BackgroundGrey">
+
+    <ImageView
+        android:id="@+id/ivHTLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ht_logo"/>
     
 
 </LinearLayout>
