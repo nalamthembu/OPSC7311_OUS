@@ -4,33 +4,63 @@
     tools:showIn="navigation_view">
 
 
-    <item
-        android:id="@+id/item_inbox"
-        android:icon="@drawable/va_mail"
-        android:title="Inbox" />
-    <item
-        android:id="@+id/item_notifs"
-        android:icon="@drawable/va_notifs"
-        android:title="Notifications" />
-    <item
-        android:id="@+id/item_timeline_view"
-        android:icon="@drawable/va_timeline"
-        android:title="Timeline View" />
-    <item
-        android:id="@+id/item_daily_goals"
-        android:icon="@drawable/va_daily_goals"
-        android:title="Daily Goals" />
-    <item
-        android:id="@+id/item_settings"
-        android:icon="@drawable/va_settings"
-        android:title="Settings" />
-    <item
-        android:id="@+id/item_help"
-        android:icon="@drawable/va_help"
-        android:title="Help" />
-    <item
-        android:id="@+id/item_about_us"
-        android:icon="@drawable/va_info"
-        android:title="About Us" />
+    <item android:title="Messages">
+        <menu>
+            <item
+                android:id="@+id/item_inbox"
+                android:icon="@drawable/va_mail"
+                android:title="Inbox" />
+            <item
+                android:id="@+id/item_notifs"
+                android:icon="@drawable/va_notifs"
+                android:title="Notifications" />
+
+        </menu>
+    </item>
+
+    <item android:title="Tasks and Goals">
+        <menu>
+            <item
+                android:id="@+id/item_timeline_view"
+                android:icon="@drawable/va_timeline"
+                android:title="Timeline View" />
+            <item
+                android:id="@+id/item_daily_goals"
+                android:icon="@drawable/va_daily_goals"
+                android:title="Daily Goals" />
+
+
+        </menu>
+
+    </item>
+
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/item_sign_out"
+                android:icon="@drawable/va_logout"
+                android:title="Sign Out"/>
+        </menu>
+    </item>
+
+    <item android:title="Tools">
+        <menu>
+            <item
+                android:id="@+id/item_settings"
+                android:icon="@drawable/va_settings"
+                android:title="Settings" />
+            <item
+                android:id="@+id/item_help"
+                android:icon="@drawable/va_help"
+                android:title="Help" />
+            <item
+                android:id="@+id/item_about_us"
+                android:icon="@drawable/va_info"
+                android:title="About Us" />
+
+        </menu>
+    </item>
+
+
 
 </menu>
