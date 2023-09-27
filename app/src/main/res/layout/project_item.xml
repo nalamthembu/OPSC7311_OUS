@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="170dp"
     android:layout_height="170dp"
     android:layout_margin="2dp"
@@ -28,7 +29,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:translationX="35dp"
-            android:translationY="5dp" />
+            app:srcCompat="@drawable/folder_icon_jpg" />
 
         <EditText
             android:id="@+id/project_dueDate"
@@ -38,7 +39,8 @@
             android:inputType="date"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            tools:text="Due date" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
