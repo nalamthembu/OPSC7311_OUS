@@ -59,7 +59,7 @@ class HomeScreenActivity : AppCompatActivity()
         recv = findViewById(R.id.myRecycler)
         userList = ArrayList()
         userAdapter = UserAdapter(this, userList as ArrayList<ProjectData>)
-        recv.layoutManager = LinearLayoutManager(this)
+        recv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recv.adapter = userAdapter
 
         //Burger Menu Action Bar
@@ -90,6 +90,7 @@ class HomeScreenActivity : AppCompatActivity()
         //Create Project Pop Up
         add_project?.setOnClickListener()
         {
+            add_project?.isEnabled = false
             val popupInflater = LayoutInflater.from(applicationContext)
             val viewPopup = popupInflater.inflate(R.layout.create_project,null)
             val containerPopup = findViewById<RelativeLayout>(R.id.rel_layout)
@@ -112,10 +113,20 @@ class HomeScreenActivity : AppCompatActivity()
 
             createProj.setOnClickListener()
             {
+
                 val pName = projName.text.toString()
                 val pDate = projDate.text.toString()
-                userList.add(ProjectData(projName.text.toString()+"name: $pName",projDate.text.toString()+"date: $pDate"))
+
+                if (pName.isNullOrBlank() || pDate.isNullOrBlank()) {
+                    Toast.makeText(this, "Make sure both fields are populated", Toast.LENGTH_SHORT)
+                        .show();
+                    return@setOnClickListener;
+                }
+
+                userList.add(ProjectData(projName.text.toString(),projDate.text.toString()))
                 userAdapter.notifyDataSetChanged()
+                containerPopup.removeView(viewPopup)
+                add_project?.isEnabled = true
             }
 
             val cancelProj:Button = viewPopup.findViewById(R.id.btn_cancel_proj)
@@ -123,6 +134,8 @@ class HomeScreenActivity : AppCompatActivity()
             cancelProj.setOnClickListener()
             {
 
+                add_project?.isEnabled = true
+                containerPopup.removeView(viewPopup)
             }
         }
     }
