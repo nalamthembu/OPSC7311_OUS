@@ -85,6 +85,7 @@ class HomeScreenActivity : AppCompatActivity()
         return super.onOptionsItemSelected(item)
     }
 
+    //Back button double press to exit
     override fun onBackPressed() {
         if(doubleBack){
             super.onBackPressed()

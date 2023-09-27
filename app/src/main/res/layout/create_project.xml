@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100pt"
-    android:layout_height="150pt"
+    android:layout_width="125pt"
+    android:layout_height="175pt"
     android:background="@drawable/popup_border"
     android:orientation="vertical"
     android:rotation="0"
@@ -12,12 +12,20 @@
         android:id="@+id/btn_create_project"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="15dp"
         android:background="@drawable/button_bg"
-        android:text="Create"
-        android:textColor="@color/white"/>
+        android:text="CREATE"
+        android:textColor="@color/white"
+        android:translationX="165dp"
+        android:translationY="365dp" />
+
+    <Button
+        android:id="@+id/btn_cancel_create"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/popup_border"
+        android:text="CANCEL"
+        android:textColor="@color/white"
+        android:translationX="25dp"
+        android:translationY="335dp" />
 
 </LinearLayout>
