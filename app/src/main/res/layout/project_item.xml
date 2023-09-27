@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
+            android:inputType="datetime|date"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="15dp"

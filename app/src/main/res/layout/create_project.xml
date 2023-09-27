@@ -1,31 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="125pt"
-    android:layout_height="175pt"
-    android:background="@drawable/popup_border"
-    android:orientation="vertical"
-    android:rotation="0"
-    android:rotationX="0"
-    android:rotationY="0">
 
-    <Button
-        android:id="@+id/btn_create_project"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:background="@drawable/button_bg"
-        android:text="CREATE"
-        android:textColor="@color/white"
-        android:translationX="165dp"
-        android:translationY="365dp" />
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="400dp"
+    >
 
-    <Button
-        android:id="@+id/btn_cancel_create"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:background="@drawable/popup_border"
-        android:text="CANCEL"
-        android:textColor="@color/white"
-        android:translationX="25dp"
-        android:translationY="335dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/AccentOrange"
+        android:orientation="vertical"
+        android:padding="6dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREATE NEW PROJECT"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationY="3dp">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="301dp"
+            android:layout_height="235dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/BackgroundGrey"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="195dp"
+                android:layout_height="123dp"
+                android:translationX="45dp"
+                tools:srcCompat="@drawable/folder_icon_jpg" />
+
+            <EditText
+                android:id="@+id/pName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#504D4D"
+                android:backgroundTint="#6C6868"
+                android:hint="Project name"
+                android:textColor="@color/white"
+                android:textColorHint="@color/LightGrey"
+                android:textSize="20dp">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/pDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#504D4D"
+                android:backgroundTint="#6C6868"
+                android:ems="10"
+                android:hint="Project due date"
+                android:inputType="date"
+                android:textColor="@color/LightGrey"
+                android:textColorHint="@color/LightGrey"
+                android:textSize="20dp"
+                android:translationY="5dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
+
