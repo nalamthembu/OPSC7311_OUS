@@ -29,8 +29,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:translationX="35dp"
-            android:translationY="5dp"
-            app:srcCompat="@drawable/baseline_person_24" />
+            app:srcCompat="@drawable/folder_icon_jpg" />
 
         <EditText
             android:id="@+id/project_dueDate"
