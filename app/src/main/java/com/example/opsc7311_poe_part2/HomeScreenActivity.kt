@@ -2,10 +2,12 @@ package com.example.opsc7311_poe_part2
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.WindowManager
@@ -14,6 +16,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
@@ -22,6 +25,8 @@ class HomeScreenActivity : AppCompatActivity()
 {
     //Burger Menu Vars
     lateinit var burger_menu: ActionBarDrawerToggle
+    var drawButton : ImageButton ?= null
+    var closeDrawButton : ImageButton ?= null
 
     //Create Project Vars
     var add_project: ImageButton ?= null
@@ -37,6 +42,8 @@ class HomeScreenActivity : AppCompatActivity()
         //Burger Menu Sets
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navigation : NavigationView = findViewById(R.id.navView)
+        drawButton = findViewById(R.id.ib_drawer)
+
 
         //Create Project Sets
         add_project = findViewById(R.id.Add_Project)
@@ -44,7 +51,17 @@ class HomeScreenActivity : AppCompatActivity()
         //Burger Menu Action Bar
         burger_menu = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
         drawerLayout.addDrawerListener(burger_menu)
-        burger_menu.syncState()
+
+        drawButton?.setOnClickListener(){
+            closeDrawButton = findViewById(R.id.ib_drawer_close)
+            drawerLayout.openDrawer(GravityCompat.START)
+
+            closeDrawButton?.setOnClickListener(){
+                drawerLayout.closeDrawer(Gravity.LEFT)
+            }
+        }
+
+
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
