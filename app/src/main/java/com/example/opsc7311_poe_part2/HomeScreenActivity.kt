@@ -7,10 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.service.autofill.UserData
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -18,7 +21,10 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.opsc7311_poe_part2.model.ProjectData
+import com.example.opsc7311_poe_part2.view.UserAdapter
 import com.google.android.material.navigation.NavigationView
 
 class HomeScreenActivity : AppCompatActivity()
@@ -30,6 +36,9 @@ class HomeScreenActivity : AppCompatActivity()
 
     //Create Project Vars
     var add_project: ImageButton ?= null
+    private lateinit var recv:RecyclerView
+    private lateinit var userList: ArrayList<ProjectData>
+    private lateinit var userAdapter:UserAdapter
 
     //Double Back
     private var doubleBack = false
@@ -47,6 +56,11 @@ class HomeScreenActivity : AppCompatActivity()
 
         //Create Project Sets
         add_project = findViewById(R.id.Add_Project)
+        recv = findViewById(R.id.myRecycler)
+        userList = ArrayList()
+        userAdapter = UserAdapter(this, userList as ArrayList<ProjectData>)
+        recv.layoutManager = LinearLayoutManager(this)
+        recv.adapter = userAdapter
 
         //Burger Menu Action Bar
         burger_menu = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
@@ -85,11 +99,31 @@ class HomeScreenActivity : AppCompatActivity()
                 RelativeLayout.LayoutParams.WRAP_CONTENT
             )
 
+            val projName = viewPopup.findViewById<EditText>(R.id.pName)
+            val projDate = viewPopup.findViewById<EditText>(R.id.pDate)
+
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
             viewPopup.layoutParams = layoutParams
 
             containerPopup.addView(viewPopup)
+
+            val createProj:Button = viewPopup.findViewById(R.id.btn_create_proj)
+
+            createProj.setOnClickListener()
+            {
+                val pName = projName.text.toString()
+                val pDate = projDate.text.toString()
+                userList.add(ProjectData(projName.text.toString()+"name: $pName",projDate.text.toString()+"date: $pDate"))
+
+            }
+
+            val cancelProj:Button = viewPopup.findViewById(R.id.btn_cancel_proj)
+
+            cancelProj.setOnClickListener()
+            {
+
+            }
         }
     }
 
