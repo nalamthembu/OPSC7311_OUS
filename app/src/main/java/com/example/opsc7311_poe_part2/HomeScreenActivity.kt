@@ -1,8 +1,11 @@
 package com.example.opsc7311_poe_part2
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.WindowManager
@@ -21,6 +24,9 @@ class HomeScreenActivity : AppCompatActivity()
 
     //Create Project Vars
     var add_project: ImageButton ?= null
+
+    //Double Back
+    private var doubleBack = false
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -44,6 +50,7 @@ class HomeScreenActivity : AppCompatActivity()
         navigation.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.item_inbox -> Toast.makeText(applicationContext, "Clicked Inbox",Toast.LENGTH_SHORT).show()
+                R.id.item_sign_out -> startActivity(Intent(this, MainActivity::class.java))
             }
             true
         }
@@ -75,5 +82,16 @@ class HomeScreenActivity : AppCompatActivity()
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        if(doubleBack){
+            super.onBackPressed()
+            return
+        }
+        this.doubleBack = true
+        Toast.makeText(this, "Press back again to Exit", Toast.LENGTH_SHORT).show()
+
+        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBack = false }, 2000)
     }
 }

@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(Intent(this, HomeScreenActivity::class.java))
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            finish()
         }
     }
 }
