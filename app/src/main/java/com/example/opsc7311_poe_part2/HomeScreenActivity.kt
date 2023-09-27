@@ -82,7 +82,13 @@ class HomeScreenActivity : AppCompatActivity()
         navigation.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.item_inbox -> Toast.makeText(applicationContext, "Clicked Inbox",Toast.LENGTH_SHORT).show()
+                R.id.item_notifs -> Toast.makeText(applicationContext, "Clicked Notifications", Toast.LENGTH_SHORT).show()
+                R.id.item_timeline_view -> Toast.makeText(applicationContext, "Clicked Timeline View", Toast.LENGTH_SHORT).show()
+                R.id.item_daily_goals -> Toast.makeText(applicationContext, "Clicked Daily Goals", Toast.LENGTH_SHORT).show()
                 R.id.item_sign_out -> startActivity(Intent(this, MainActivity::class.java))
+                R.id.item_settings -> Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_SHORT).show()
+                R.id.item_help -> Toast.makeText(applicationContext, "Clicked Help", Toast.LENGTH_SHORT).show()
+                R.id.item_about_us -> Toast.makeText(applicationContext, "Clicked About Us", Toast.LENGTH_SHORT).show()
             }
             true
         }
