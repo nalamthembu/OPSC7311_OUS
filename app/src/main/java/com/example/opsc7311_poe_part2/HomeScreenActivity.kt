@@ -115,7 +115,7 @@ class HomeScreenActivity : AppCompatActivity()
                 val pName = projName.text.toString()
                 val pDate = projDate.text.toString()
                 userList.add(ProjectData(projName.text.toString()+"name: $pName",projDate.text.toString()+"date: $pDate"))
-
+                userAdapter.notifyDataSetChanged()
             }
 
             val cancelProj:Button = viewPopup.findViewById(R.id.btn_cancel_proj)
