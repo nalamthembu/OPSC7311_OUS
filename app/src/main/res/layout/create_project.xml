@@ -43,8 +43,9 @@
                 android:id="@+id/imageView3"
                 android:layout_width="195dp"
                 android:layout_height="123dp"
+                android:layout_marginTop="50dp"
                 android:translationX="45dp"
-                tools:srcCompat="@drawable/folder_icon_jpg" />
+                android:src="@drawable/folder_icon_jpg"/>
 
             <EditText
                 android:id="@+id/pName"
