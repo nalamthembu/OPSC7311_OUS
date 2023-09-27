@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="350dp"
     android:layout_marginTop="50dp"
     android:layout_marginLeft="50dp"
     android:layout_marginRight="50dp"
@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/AccentOrange"
+        android:background="@drawable/accent_orange_fill"
         android:orientation="vertical"
         android:padding="6dp"
         >
@@ -34,7 +34,7 @@
 
         <LinearLayout
             android:layout_width="301dp"
-            android:layout_height="235dp"
+            android:layout_height="300dp"
             android:layout_marginTop="10dp"
             android:background="@color/BackgroundGrey"
             android:orientation="vertical">
@@ -73,6 +73,31 @@
                 android:textColorHint="@color/LightGrey"
                 android:textSize="20dp"
                 android:translationY="5dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btn_cancel_proj"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:text="CANCEL"
+                    android:textColor="@color/white"
+                    android:background="@drawable/popup_border"/>
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="190dp"
+                    android:text="CREATE"
+                    android:textColor="@color/white"
+                    android:background="@drawable/accent_orange_fill"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 
