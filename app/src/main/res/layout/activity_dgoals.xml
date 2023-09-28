@@ -68,6 +68,26 @@
         android:text="MINS"
         android:textColor="@color/white" />
 
+    <Button
+        android:id="@+id/btn_set_min"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="95dp"
+        android:text="Set Mininum Goal"
+        android:textColor="@color/white"
+        android:background="@drawable/popup_border"/>
+
+    <Button
+        android:id="@+id/btn_set_max"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="210dp"
+        android:text="Set Maximum Goal"
+        android:textColor="@color/white"
+        android:background="@drawable/button_bg"/>
+
     <LinearLayout
         android:layout_margin="10dp"
         android:orientation="horizontal"
