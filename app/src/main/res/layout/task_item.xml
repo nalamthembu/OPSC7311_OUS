@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/BackgroundGrey">
@@ -77,18 +79,10 @@
 
         </EditText>
 
-        <ImageView
-            android:id="@+id/tImage"
-            android:layout_width="44dp"
-            android:layout_height="43dp"
-            android:src="@tools:sample/avatars"
-            android:translationX="50dp"
-            android:translationY="10dp" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/TopLine"
-        tools:srcCompat="@color/AccentOrange"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_alignParentStart="true"
@@ -98,7 +92,6 @@
 
     <ImageView
         android:id="@+id/VerticalLine"
-        tools:srcCompat="@color/AccentOrange"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_alignParentStart="true"
@@ -110,7 +103,6 @@
 
     <ImageView
         android:id="@+id/verticalLine"
-        tools:srcCompat="@color/AccentOrange"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_alignParentStart="true"
@@ -122,7 +114,6 @@
 
     <ImageView
         android:id="@+id/verticalLine2"
-        tools:srcCompat="@color/AccentOrange"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_alignParentStart="true"
@@ -134,7 +125,6 @@
 
     <ImageView
         android:id="@+id/verticalLine3"
-        tools:srcCompat="@color/AccentOrange"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_alignParentStart="true"
@@ -146,7 +136,6 @@
 
     <ImageView
         android:id="@+id/BottomLine"
-        tools:srcCompat="@color/AccentOrange"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_alignParentStart="true"
