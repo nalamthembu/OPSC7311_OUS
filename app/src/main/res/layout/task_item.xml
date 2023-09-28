@@ -5,72 +5,86 @@
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/BackgroundGrey">
 
-    <EditText
-        android:id="@+id/tName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00504D4D"
-        android:backgroundTint="#6C6868"
-        android:hint="Task name"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/LightGrey"
-        android:textSize="15dp"
-        android:translationX="5dp"
-        android:translationY="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    </EditText>
+        <EditText
+            android:id="@+id/tName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00504D4D"
+            android:backgroundTint="#6C6868"
+            android:hint="Task name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/LightGrey"
+            android:textSize="15dp"
+            android:translationX="5dp"
+            android:translationY="20dp">
 
-    <EditText
-        android:id="@+id/tCurrentDate"
-        android:layout_width="91dp"
-        android:layout_height="wrap_content"
-        android:background="#00504D4D"
-        android:backgroundTint="#6C6868"
-        android:hint="Current Date"
-        android:inputType="datetime|date"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/LightGrey"
-        android:textSize="15dp"
-        android:translationX="90dp"
-        android:translationY="20dp">
+        </EditText>
 
-    </EditText>
+        <EditText
+            android:id="@+id/tCurrentDate"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content"
+            android:background="#00504D4D"
+            android:backgroundTint="#6C6868"
+            android:hint="Current Date"
+            android:inputType="datetime|date"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/LightGrey"
+            android:textSize="15dp"
+            android:translationX="15dp"
+            android:translationY="20dp">
 
-    <EditText
-        android:id="@+id/tStartTime"
-        android:layout_width="91dp"
-        android:layout_height="wrap_content"
-        android:background="#00504D4D"
-        android:backgroundTint="#6C6868"
-        android:hint="Current Time"
-        android:inputType="datetime|date"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/LightGrey"
-        android:textSize="15dp"
-        android:translationX="190dp"
-        android:translationY="20dp">
+        </EditText>
 
-    </EditText>
+        <EditText
+            android:id="@+id/tStartTime"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content"
+            android:background="#00504D4D"
+            android:backgroundTint="#6C6868"
+            android:hint="Current Time"
+            android:inputType="datetime|date"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/LightGrey"
+            android:textSize="15dp"
+            android:translationX="25dp"
+            android:translationY="20dp">
 
-    <EditText
-        android:id="@+id/tEndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00504D4D"
-        android:backgroundTint="#6C6868"
-        android:hint="End Time"
-        android:inputType="datetime|date"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textColorHint="@color/LightGrey"
-        android:textSize="15dp"
-        android:translationX="292dp"
-        android:translationY="20dp">
+        </EditText>
 
-    </EditText>
+        <EditText
+            android:id="@+id/tEndTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00504D4D"
+            android:backgroundTint="#6C6868"
+            android:hint="End Time"
+            android:inputType="datetime|date"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/LightGrey"
+            android:textSize="15dp"
+            android:translationX="35dp"
+            android:translationY="20dp">
+
+        </EditText>
+
+        <ImageView
+            android:id="@+id/tImage"
+            android:layout_width="44dp"
+            android:layout_height="43dp"
+            android:src="@tools:sample/avatars"
+            android:translationX="50dp"
+            android:translationY="10dp" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/TopLine"
@@ -140,13 +154,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:background="@color/AccentOrange" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="44dp"
-        android:layout_height="43dp"
-        android:src="@tools:sample/avatars"
-        android:translationX="365dp"
-        android:translationY="10dp" />
 
 </androidx.cardview.widget.CardView>
