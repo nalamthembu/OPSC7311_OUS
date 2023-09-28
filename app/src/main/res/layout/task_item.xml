@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:background="#00504D4D"
             android:backgroundTint="#6C6868"
-            android:hint="Current Time"
+            android:hint="Start Time"
             android:inputType="datetime|date"
             android:textAlignment="center"
             android:textColor="@color/white"

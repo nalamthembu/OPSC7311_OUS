@@ -9,21 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.opsc7311_poe_part2.R
 import com.example.opsc7311_poe_part2.model.ProjectData
 
-class UserAdapter(val c:Context,val userList: ArrayList<ProjectData>): RecyclerView.Adapter<UserAdapter.userViewHolder>()
+class UserAdapter(val c:Context,val userList: ArrayList<ProjectData>): RecyclerView.Adapter<UserAdapter.UserViewHolder>()
 {
-    inner class userViewHolder(val v:View):RecyclerView.ViewHolder(v)
+    inner class UserViewHolder(val v:View):RecyclerView.ViewHolder(v)
     {
         val Name = v.findViewById<TextView>(R.id.project_Name)
         val DueDate = v.findViewById<TextView>(R.id.project_dueDate)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): userViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder
     {
         val inflater = LayoutInflater.from(parent.context)
         val v = inflater.inflate(R.layout.project_item,parent,false)
-        return userViewHolder(v)
+        return UserViewHolder(v)
     }
-    override fun onBindViewHolder(holder: userViewHolder, position: Int)
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int)
     {
         val newList = userList[position]
         holder.Name.text = newList.projectName
