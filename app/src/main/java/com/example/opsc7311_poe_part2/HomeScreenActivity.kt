@@ -90,6 +90,7 @@ class HomeScreenActivity : AppCompatActivity()
                 R.id.item_help -> Toast.makeText(applicationContext, "Clicked Help", Toast.LENGTH_SHORT).show()
                 R.id.item_about_us -> Toast.makeText(applicationContext, "Clicked About Us", Toast.LENGTH_SHORT).show()
             }
+            drawerLayout.closeDrawer(Gravity.LEFT)
             true
         }
 

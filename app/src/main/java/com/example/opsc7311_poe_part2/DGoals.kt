@@ -16,7 +16,7 @@ class DGoals : AppCompatActivity() {
         buttonHome = findViewById(R.id.ib_dg_home)
 
         buttonHome?.setOnClickListener(){
-            startActivity(Intent(this, HomeScreenActivity::class.java))
+            onBackPressed()
         }
     }
 }
