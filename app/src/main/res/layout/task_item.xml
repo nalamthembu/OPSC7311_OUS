@@ -1,6 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/BackgroundGrey">
+
+    <EditText
+        android:id="@+id/tName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00504D4D"
+        android:backgroundTint="#6C6868"
+        android:hint="Task name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/LightGrey"
+        android:textSize="15dp"
+        android:translationX="5dp"
+        android:translationY="20dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/tCurrentDate"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:background="#00504D4D"
+        android:backgroundTint="#6C6868"
+        android:hint="Current Date"
+        android:inputType="datetime|date"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/LightGrey"
+        android:textSize="15dp"
+        android:translationX="90dp"
+        android:translationY="20dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/tStartTime"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:background="#00504D4D"
+        android:backgroundTint="#6C6868"
+        android:hint="Current Time"
+        android:inputType="datetime|date"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/LightGrey"
+        android:textSize="15dp"
+        android:translationX="190dp"
+        android:translationY="20dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/tEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00504D4D"
+        android:backgroundTint="#6C6868"
+        android:hint="End Time"
+        android:inputType="datetime|date"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/LightGrey"
+        android:textSize="15dp"
+        android:translationX="292dp"
+        android:translationY="20dp">
+
+    </EditText>
+
+    <ImageView
+        android:id="@+id/TopLine"
+        tools:srcCompat="@color/AccentOrange"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/AccentOrange" />
+
+    <ImageView
+        android:id="@+id/VerticalLine"
+        tools:srcCompat="@color/AccentOrange"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/AccentOrange"
+        android:rotation="90"
+        android:translationX="-120dp" />
+
+    <ImageView
+        android:id="@+id/verticalLine"
+        tools:srcCompat="@color/AccentOrange"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/AccentOrange"
+        android:rotation="90"
+        android:translationX="-20dp" />
+
+    <ImageView
+        android:id="@+id/verticalLine2"
+        tools:srcCompat="@color/AccentOrange"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/AccentOrange"
+        android:rotation="90"
+        android:translationX="80dp" />
+
+    <ImageView
+        android:id="@+id/verticalLine3"
+        tools:srcCompat="@color/AccentOrange"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/AccentOrange"
+        android:rotation="90"
+        android:translationX="157dp" />
+
+    <ImageView
+        android:id="@+id/BottomLine"
+        tools:srcCompat="@color/AccentOrange"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@color/AccentOrange" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="44dp"
+        android:layout_height="43dp"
+        android:src="@tools:sample/avatars"
+        android:translationX="365dp"
+        android:translationY="10dp" />
 
 </androidx.cardview.widget.CardView>
