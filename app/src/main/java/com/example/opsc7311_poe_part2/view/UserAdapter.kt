@@ -1,17 +1,13 @@
 package com.example.opsc7311_poe_part2.view
 
 import android.content.Context
-import android.service.autofill.UserData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.opsc7311_poe_part2.R
 import com.example.opsc7311_poe_part2.model.ProjectData
-import java.text.DateFormat
-import java.util.Date
 
 class UserAdapter(val c:Context,val userList: ArrayList<ProjectData>): RecyclerView.Adapter<UserAdapter.userViewHolder>()
 {
@@ -37,6 +33,5 @@ class UserAdapter(val c:Context,val userList: ArrayList<ProjectData>): RecyclerV
     {
         return userList.size
     }
-
 
 }
