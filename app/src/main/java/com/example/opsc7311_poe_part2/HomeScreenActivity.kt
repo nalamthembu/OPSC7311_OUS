@@ -1,6 +1,7 @@
 package com.example.opsc7311_poe_part2
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -26,6 +28,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.opsc7311_poe_part2.model.ProjectData
 import com.example.opsc7311_poe_part2.view.UserAdapter
 import com.google.android.material.navigation.NavigationView
+import org.w3c.dom.Text
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class HomeScreenActivity : AppCompatActivity()
 {
@@ -39,7 +45,7 @@ class HomeScreenActivity : AppCompatActivity()
     private lateinit var recv:RecyclerView
     private lateinit var userList: ArrayList<ProjectData>
     private lateinit var userAdapter:UserAdapter
-
+    private var dateOnPopMenu : TextView ?= null
     //Double Back
     private var doubleBack = false
 
@@ -108,7 +114,21 @@ class HomeScreenActivity : AppCompatActivity()
             )
 
             val projName = viewPopup.findViewById<EditText>(R.id.pName)
-            val projDate = viewPopup.findViewById<EditText>(R.id.pDate)
+            val projDate = viewPopup.findViewById<Button>(R.id.btnPickDate) //-> old var name = pDate
+
+            //NEW_DATE_CODE
+            //Get year, month and day from calendar
+            val c = Calendar.getInstance()
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            val month = c.get(Calendar.MONTH)
+            val year = c.get(Calendar.YEAR)
+
+            //Open date picker
+            projDate.setOnClickListener()
+            {
+                clickDatePicker()
+            }
+            //END_OF_NEW_DATE_CODE
 
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
@@ -124,13 +144,17 @@ class HomeScreenActivity : AppCompatActivity()
                 val pName = projName.text.toString()
                 val pDate = projDate.text.toString()
 
-                if (pName.isNullOrBlank() || pDate.isNullOrBlank()) {
+                //TO-DO : NEED TO VALIDATE DATE
+                if (pName.isNullOrBlank()) {
                     Toast.makeText(this, "Make sure both fields are populated", Toast.LENGTH_SHORT)
                         .show();
                     return@setOnClickListener;
                 }
 
-                userList.add(ProjectData(projName.text.toString(),projDate.text.toString()))
+                //ASSUMING DATE_ON_POP_UP_MENU_IS_NOT_NULL
+                val date_string = dateOnPopMenu?.text.toString()
+
+                userList.add(ProjectData(projName.text.toString(), date_string)) //OLD_CODE -> projDate.text.toString()
                 userAdapter.notifyDataSetChanged()
                 containerPopup.removeView(viewPopup)
                 add_project?.isEnabled = true
@@ -145,6 +169,41 @@ class HomeScreenActivity : AppCompatActivity()
                 containerPopup.removeView(viewPopup)
             }
         }
+    }
+
+    private fun clickDatePicker()
+    {
+        val myCalendar = Calendar.getInstance()
+        val year = myCalendar.get(Calendar.YEAR)
+        val month = myCalendar.get(Calendar.MONTH)
+        val day = myCalendar.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this,
+            {_, selectedYear, selectedMonth, selectedDayOfMonth ->
+
+                Toast.makeText(this, "Year was $selectedYear, month was ${selectedMonth+1}, " +
+                        "day was $selectedDayOfMonth", Toast.LENGTH_LONG).show()
+
+                val selectedDate = "$selectedDayOfMonth/${selectedMonth+1}/$selectedYear"
+
+                dateOnPopMenu = findViewById<TextView>(R.id.txtDateOnPopUp)
+
+                dateOnPopMenu?.text = selectedDate;
+
+                //Convert above date(String) to a date object that we can perform calculations on
+                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+
+                val theDate = sdf.parse(selectedDate)
+
+            },
+            year,
+            month,
+            day
+        )
+
+        //Dont allow a future date to be selected
+        dpd.datePicker.maxDate = System.currentTimeMillis() - 86400000
+        dpd.show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

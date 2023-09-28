@@ -62,6 +62,7 @@
 
             </EditText>
 
+<!-- OLD_DATE_PICKER
             <EditText
                 android:id="@+id/pDate"
                 android:layout_width="match_parent"
@@ -75,20 +76,43 @@
                 android:textColorHint="@color/LightGrey"
                 android:textSize="20dp"
                 android:translationY="-40dp" />
+    END_OF_OLD_DATE_PICKER
+-->
+            <!-- NEW_DATE_PICKER_CODE -->
+            <Button
+                android:id="@+id/btnPickDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-35dp"
+                android:text="Choose Date" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDateOnPopUp"
+                android:layout_marginLeft="10dp"
+                android:textSize="15dp"
+                android:textColor="@android:color/white"
+                android:background="@color/AccentOrange"
+                android:text="Date"
+                />
+            <!-- END_OF_NEW_DATE_PICKER -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
+
                 <Button
                     android:id="@+id/btn_cancel_proj"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/popup_border"
                     android:text="CANCEL"
-                    android:textColor="@color/white"
-                    android:background="@drawable/popup_border"/>
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btn_create_proj"
