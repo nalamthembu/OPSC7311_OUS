@@ -48,7 +48,7 @@
                 android:translationY="-50dp" />-->
 
             <EditText
-                android:id="@+id/pName"
+                android:id="@+id/tDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="65dp"
@@ -66,7 +66,7 @@
 
             <!-- NEW_DATE_PICKER_CODE -->
             <Button
-                android:id="@+id/btnPickDate"
+                android:id="@+id/tCurrentDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-35dp"
@@ -84,7 +84,7 @@
                 />
             <!-- END_OF_NEW_DATE_PICKER -->
             <EditText
-                android:id="@+id/pStartTime"
+                android:id="@+id/tStartTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -99,7 +99,7 @@
                 android:translationY="-40dp" />
 
             <EditText
-                android:id="@+id/pEndTime"
+                android:id="@+id/tEndTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
