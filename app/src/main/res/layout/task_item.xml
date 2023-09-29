@@ -130,4 +130,5 @@
         android:rotation="90"
         android:translationX="157dp" />
 
+
 </androidx.cardview.widget.CardView>

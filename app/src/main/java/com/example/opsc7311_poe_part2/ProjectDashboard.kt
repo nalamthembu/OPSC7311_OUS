@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import android.content.Context
+import android.widget.ImageView
+import com.github.dhaval2404.imagepicker.ImagePicker
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -31,7 +33,7 @@ class ProjectDashboard : AppCompatActivity()
     private lateinit var taskAdapter: TaskAdapter
     var btnAddTask : ImageButton ?= null
     private var dateOnPopMenu : TextView ?= null
-
+    private  var imageView: ImageView?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -142,6 +144,19 @@ class ProjectDashboard : AppCompatActivity()
         btnHome?.setOnClickListener(){
             onBackPressed()
         }
+        //Image Picker
+        imageView = findViewById(R.id.imageView3)
+        val button : Button = viewPopup.findViewById(R.id.floatingActionButton)
+
+        button?.setOnClickListener(){
+            Toast.makeText(applicationContext, "Button Clicked", Toast.LENGTH_SHORT).show()
+            ImagePicker.with(this)
+                .crop()	    			//Crop image(Optional), Check Customization for more option
+                .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                .start()
+        }
+        //End Image Picker
     }
 
     private fun Save(desc : String, startTime : String, endTime : String, currDate : String )

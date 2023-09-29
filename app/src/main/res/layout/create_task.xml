@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="500dp"
     android:layout_marginTop="50dp"
     android:layout_marginLeft="50dp"
     android:layout_marginRight="50dp"
@@ -33,7 +33,7 @@
 
         <LinearLayout
             android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_height="500dp"
             android:layout_marginTop="10dp"
             android:background="@color/BackgroundGrey"
             android:orientation="vertical">
@@ -82,12 +82,36 @@
                 android:background="@color/AccentOrange"
                 android:text="Date"
                 />
+
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="75dp">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/baseline_person_24" />
+
+                <Button
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:translationX="250dp"
+                    android:translationY="10dp"
+                    android:clickable="true" />
+
+            </RelativeLayout>
+
+
             <!-- END_OF_NEW_DATE_PICKER -->
             <EditText
                 android:id="@+id/tStartTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="10dp"
+
                 android:background="#504D4D"
                 android:backgroundTint="#6C6868"
                 android:ems="10"
@@ -96,7 +120,7 @@
                 android:textColor="@color/LightGrey"
                 android:textColorHint="@color/LightGrey"
                 android:textSize="20dp"
-                android:translationY="-40dp" />
+                android:translationY="70dp" />
 
             <EditText
                 android:id="@+id/tEndTime"
@@ -111,7 +135,7 @@
                 android:textColor="@color/LightGrey"
                 android:textColorHint="@color/LightGrey"
                 android:textSize="20dp"
-                android:translationY="-40dp" />
+                android:translationY="70dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -119,10 +143,12 @@
 
 
 
+
                 <Button
                     android:id="@+id/btn_cancel_proj"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:translationY="100dp"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/popup_border"
                     android:text="CANCEL"
@@ -132,10 +158,13 @@
                     android:id="@+id/btn_create_proj"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:translationY="100dp"
                     android:layout_marginStart="190dp"
                     android:text="CREATE"
                     android:textColor="@color/white"
                     android:background="@drawable/accent_orange_fill"/>
+
+
 
             </RelativeLayout>
 
