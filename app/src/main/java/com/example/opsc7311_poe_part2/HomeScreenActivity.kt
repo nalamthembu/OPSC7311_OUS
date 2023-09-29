@@ -29,6 +29,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.opsc7311_poe_part2.model.ProjectData
 import com.example.opsc7311_poe_part2.view.TaskAdapter
 import com.example.opsc7311_poe_part2.view.UserAdapter
+import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
@@ -51,6 +53,9 @@ class HomeScreenActivity : AppCompatActivity()
     //Double Back
     private var doubleBack = false
 
+    //Camera Variables
+    private  var imageView: ImageView?=null
+    private  var button: Button?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -137,6 +142,20 @@ class HomeScreenActivity : AppCompatActivity()
             val projName = viewPopup.findViewById<EditText>(R.id.pName)
             val projDate = viewPopup.findViewById<Button>(R.id.btnPickDate) //-> old var name = pDate
 
+            //Image Picker
+            imageView = findViewById(R.id.imageView3)
+            button = findViewById(R.id.floatingActionButton)
+
+            button?.setOnClickListener{
+
+                ImagePicker.with(this)
+                    .crop()	    			//Crop image(Optional), Check Customization for more option
+                    .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                    .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                    .start()
+            }
+            //End Image Picker
+
             //NEW_DATE_CODE
             //Get year, month and day from calendar
             val c = Calendar.getInstance()
@@ -196,6 +215,8 @@ class HomeScreenActivity : AppCompatActivity()
     {
     }
 
+
+
     private fun clickDatePicker()
     {
         val myCalendar = Calendar.getInstance()
@@ -231,6 +252,10 @@ class HomeScreenActivity : AppCompatActivity()
         dpd.show()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        imageView?.setImageURI(data?.data)
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if(burger_menu.onOptionsItemSelected(item)){

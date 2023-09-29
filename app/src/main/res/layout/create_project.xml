@@ -39,17 +39,33 @@
             android:background="@color/BackgroundGrey"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="195dp"
-                android:layout_height="123dp"
-                android:layout_marginTop="50dp"
-                android:src="@drawable/folder_icon_jpg"
-                android:translationX="45dp"
-                android:translationY="-50dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="125dp">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="195dp"
+                    android:layout_height="125dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/baseline_person_24" />
+
+                    <Button
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                    android:background="@drawable/baseline_camera_alt_24" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <EditText
                 android:id="@+id/pName"
+                android:layout_marginTop="45dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#504D4D"
