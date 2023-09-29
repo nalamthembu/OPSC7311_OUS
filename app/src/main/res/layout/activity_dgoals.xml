@@ -68,6 +68,15 @@
         android:text="MINS"
         android:textColor="@color/white" />
 
+    <ImageView
+        android:layout_width="163dp"
+        android:layout_height="149dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="203dp"
+        android:src="@drawable/speach_bubble" />
+
     <Button
         android:id="@+id/btn_set_min"
         android:layout_width="110dp"
@@ -89,26 +98,29 @@
         android:background="@drawable/button_bg"/>
 
     <LinearLayout
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
         <NumberPicker
             android:id="@+id/numPickerHours"
-            android:theme="@style/NumberPickerStyle"
-            android:layout_marginTop="105dp"
-            android:layout_marginStart="130dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="105dp"
+            android:theme="@style/NumberPickerStyle" />
 
         <NumberPicker
             android:id="@+id/numPickerMinutes"
-            android:theme="@style/NumberPickerStyle"
-            android:layout_marginTop="105dp"
-            android:layout_marginStart="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="105dp"
+            android:theme="@style/NumberPickerStyle" />
 
     </LinearLayout>
 
