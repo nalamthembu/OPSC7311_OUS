@@ -55,7 +55,7 @@ class HomeScreenActivity : AppCompatActivity()
 
     //Camera Variables
     private  var imageView: ImageView?=null
-    private  var button: Button?=null
+    private  var button: ImageButton?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -148,8 +148,8 @@ class HomeScreenActivity : AppCompatActivity()
             button = findViewById(R.id.floatingActionButton)
 
             button?.setOnClickListener{
-
-                ImagePicker.with(this)
+                Toast.makeText(applicationContext, "ButtonClicked", Toast.LENGTH_SHORT).show()
+                     ImagePicker.with(this)
                     .crop()	    			//Crop image(Optional), Check Customization for more option
                     .compress(1024)			//Final image size will be less than 1 MB(Optional)
                     .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
