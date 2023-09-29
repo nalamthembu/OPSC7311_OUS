@@ -69,12 +69,12 @@
         android:textColor="@color/white" />
 
     <ImageView
-        android:layout_width="163dp"
-        android:layout_height="149dp"
+        android:layout_width="165dp"
+        android:layout_height="150dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="203dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="200dp"
         android:src="@drawable/speach_bubble" />
 
     <Button
@@ -96,6 +96,14 @@
         android:text="Set Maximum Goal"
         android:textColor="@color/white"
         android:background="@drawable/button_bg"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yini"
+        android:textColor="@color/black"
+        android:translationX="295dp"
+        android:translationY="425dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
