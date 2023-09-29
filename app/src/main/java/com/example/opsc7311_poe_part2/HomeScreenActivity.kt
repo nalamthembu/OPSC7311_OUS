@@ -20,12 +20,14 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.opsc7311_poe_part2.model.ProjectData
+import com.example.opsc7311_poe_part2.view.TaskAdapter
 import com.example.opsc7311_poe_part2.view.UserAdapter
 import com.google.android.material.navigation.NavigationView
 import org.w3c.dom.Text
@@ -49,6 +51,8 @@ class HomeScreenActivity : AppCompatActivity()
     //Double Back
     private var doubleBack = false
 
+
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -68,10 +72,15 @@ class HomeScreenActivity : AppCompatActivity()
         recv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recv.adapter = userAdapter
 
-        userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener {
-            override fun onItemClick(position: Int) {
 
+
+
+        userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener { override fun onItemClick(position: Int)
+            {
+                //var intent = Intent(this@HomeScreenActivity,ProjectDashboard::class.java)
                 Toast.makeText(this@HomeScreenActivity, "You Clicked project NO: $position", Toast.LENGTH_SHORT).show()
+
+                startActivity(Intent(this@HomeScreenActivity,ProjectDashboard::class.java))
             }
 
         })
@@ -178,6 +187,10 @@ class HomeScreenActivity : AppCompatActivity()
                 containerPopup.removeView(viewPopup)
             }
         }
+    }
+
+    private fun GoToProjectDashboard()
+    {
     }
 
     private fun clickDatePicker()
