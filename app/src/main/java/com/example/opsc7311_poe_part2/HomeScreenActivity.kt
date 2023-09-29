@@ -73,14 +73,17 @@ class HomeScreenActivity : AppCompatActivity()
         recv.adapter = userAdapter
 
 
-
-
-        userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener { override fun onItemClick(position: Int)
+        userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener { override fun onItemClick(itemName: String, position: Int)
             {
-                //var intent = Intent(this@HomeScreenActivity,ProjectDashboard::class.java)
                 Toast.makeText(this@HomeScreenActivity, "You Clicked project NO: $position", Toast.LENGTH_SHORT).show()
 
-                startActivity(Intent(this@HomeScreenActivity,ProjectDashboard::class.java))
+                var intent : Intent = Intent(this@HomeScreenActivity,ProjectDashboard::class.java)
+
+                //TO-DO : PUT_PROJECT_NAME_IN_EXTRA
+
+                intent.putExtra("project_name", itemName)
+
+                startActivity(intent)
             }
 
         })
@@ -224,7 +227,7 @@ class HomeScreenActivity : AppCompatActivity()
         )
 
         //Dont allow a future date to be selected
-        dpd.datePicker.maxDate = System.currentTimeMillis() - 86400000
+        //dpd.datePicker.maxDate = System.currentTimeMillis() - 86400000
         dpd.show()
     }
 

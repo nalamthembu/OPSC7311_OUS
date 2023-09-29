@@ -17,7 +17,7 @@ class UserAdapter(val c:Context,val userList: ArrayList<ProjectData>): RecyclerV
 
     interface onClickListener
     {
-        fun onItemClick(position: Int)
+        fun onItemClick(itemName: String, position : Int)
     }
 
     fun setOnItemClickListener(listener: onClickListener)
@@ -34,7 +34,7 @@ class UserAdapter(val c:Context,val userList: ArrayList<ProjectData>): RecyclerV
         init
         {
             v.setOnClickListener{
-                listener.onItemClick(adapterPosition)
+                listener.onItemClick(Name.text.toString(), adapterPosition)
             }
         }
     }

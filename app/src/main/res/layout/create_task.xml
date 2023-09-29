@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="400dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/accent_orange_fill"
+        android:orientation="vertical"
+        android:padding="6dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREATE NEW TASK"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationY="3dp">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/BackgroundGrey"
+            android:orientation="vertical">
+
+            <!--<ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="195dp"
+                android:layout_height="123dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/folder_icon_jpg"
+                android:translationX="45dp"
+                android:translationY="-50dp" />-->
+
+            <EditText
+                android:id="@+id/pName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:background="#504D4D"
+                android:backgroundTint="#6C6868"
+                android:hint="Task Description"
+                android:textColor="@color/white"
+                android:textColorHint="@color/LightGrey"
+                android:textSize="20dp"
+                android:translationY="-50dp">
+
+            </EditText>
+
+
+
+            <!-- NEW_DATE_PICKER_CODE -->
+            <Button
+                android:id="@+id/btnPickDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-35dp"
+                android:text="Choose Date" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDateOnPopUp"
+                android:layout_marginLeft="10dp"
+                android:textSize="15dp"
+                android:textColor="@android:color/white"
+                android:background="@color/AccentOrange"
+                android:text="Date"
+                />
+            <!-- END_OF_NEW_DATE_PICKER -->
+            <EditText
+                android:id="@+id/pStartTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="#504D4D"
+                android:backgroundTint="#6C6868"
+                android:ems="10"
+                android:hint="Start Time"
+                android:inputType="date"
+                android:textColor="@color/LightGrey"
+                android:textColorHint="@color/LightGrey"
+                android:textSize="20dp"
+                android:translationY="-40dp" />
+
+            <EditText
+                android:id="@+id/pEndTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="#504D4D"
+                android:backgroundTint="#6C6868"
+                android:ems="10"
+                android:hint="End Time"
+                android:inputType="date"
+                android:textColor="@color/LightGrey"
+                android:textColorHint="@color/LightGrey"
+                android:textSize="20dp"
+                android:translationY="-40dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+                <Button
+                    android:id="@+id/btn_cancel_proj"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/popup_border"
+                    android:text="CANCEL"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_create_proj"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="190dp"
+                    android:text="CREATE"
+                    android:textColor="@color/white"
+                    android:background="@drawable/accent_orange_fill"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

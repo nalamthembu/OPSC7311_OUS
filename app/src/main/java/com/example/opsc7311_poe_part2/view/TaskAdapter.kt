@@ -13,7 +13,7 @@ class TaskAdapter(val c: Context, val taskList: ArrayList<TaskData>): RecyclerVi
 {
     inner class userViewHolder(val v:View):RecyclerView.ViewHolder(v)
     {
-        val tName = v.findViewById<TextView>(R.id.tName)
+        val tName = v.findViewById<TextView>(R.id.tDescription)
         val currentDate = v.findViewById<TextView>(R.id.tCurrentDate)
         val startTime = v.findViewById<TextView>(R.id.tStartTime)
         val endTime = v.findViewById<TextView>(R.id.tEndTime)
