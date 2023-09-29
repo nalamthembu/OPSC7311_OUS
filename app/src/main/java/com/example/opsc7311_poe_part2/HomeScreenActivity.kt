@@ -73,15 +73,16 @@ class HomeScreenActivity : AppCompatActivity()
         recv.adapter = userAdapter
 
 
-        userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener { override fun onItemClick(itemName: String, position: Int)
+        userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener { override fun onItemClick(itemName: String, itemDate :String)
             {
-                Toast.makeText(this@HomeScreenActivity, "You Clicked project NO: $position", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@HomeScreenActivity, "You Clicked project NO: $position", Toast.LENGTH_SHORT).show()
 
                 var intent : Intent = Intent(this@HomeScreenActivity,ProjectDashboard::class.java)
 
-                //TO-DO : PUT_PROJECT_NAME_IN_EXTRA
+                //TO-DO : PUT_PROJECT_NAME & DATE _IN_EXTRA
 
                 intent.putExtra("project_name", itemName)
+                intent.putExtra("project_date", itemDate)
 
                 startActivity(intent)
             }
