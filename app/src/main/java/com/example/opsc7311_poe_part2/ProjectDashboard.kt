@@ -17,6 +17,10 @@ import com.example.opsc7311_poe_part2.view.TaskAdapter
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import android.content.Context
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
 class ProjectDashboard : AppCompatActivity()
 {
@@ -100,8 +104,7 @@ class ProjectDashboard : AppCompatActivity()
                 val tCurrDate = dateOnPopMenu?.text.toString()
 
                 //TO-DO : NEED TO VALIDATE DATE
-                if (tDescrip.isNullOrBlank() || tCurrDate.isNullOrBlank() || tStartTime.isNullOrBlank() || tEndTime.isNullOrBlank())
-                {
+                if (tDescrip.isNullOrBlank() || tCurrDate.isNullOrBlank() || tStartTime.isNullOrBlank() || tEndTime.isNullOrBlank()) {
                     Toast.makeText(this, "Make sure both fields are populated", Toast.LENGTH_SHORT)
                         .show();
                     return@setOnClickListener;
@@ -110,13 +113,23 @@ class ProjectDashboard : AppCompatActivity()
                 //ASSUMING DATE_ON_POP_UP_MENU_IS_NOT_NULL
                 //val date_string = dateOnPopMenu?.text.toString()
 
-                userList.add(TaskData(taskDescrip.text.toString(), tCurrDate/*taskCurrDate.text.toString()*/, taskStartTime.text.toString(), taskEndTime.text.toString())) //OLD_CODE -> projDate.text.toString()
+                userList.add(
+                    TaskData(
+                        taskDescrip.text.toString(),
+                        tCurrDate/*taskCurrDate.text.toString()*/,
+                        taskStartTime.text.toString(),
+                        taskEndTime.text.toString()
+                    )
+                ) //OLD_CODE -> projDate.text.toString()
                 taskAdapter.notifyDataSetChanged()
                 taskContainer.removeView(viewTask)
                 btnAddTask?.isEnabled = true
 
                 taskContainer.removeView(viewTask)
                 btnAddTask?.isEnabled = true
+
+                //SAVE_INFORMATION
+                Save(tDescrip, tStartTime, tEndTime, tCurrDate);
             }
 
             cancelTask.setOnClickListener()
@@ -128,6 +141,134 @@ class ProjectDashboard : AppCompatActivity()
 
         btnHome?.setOnClickListener(){
             onBackPressed()
+        }
+    }
+
+    private fun Save(desc : String, startTime : String, endTime : String, currDate : String )
+    {
+        //AFTER A TASK IS CREATED - SAVE IT TO THE DISK
+        var context = applicationContext;
+        val path = context.filesDir.path
+
+        //CREATE_DIR
+        val letDirectory = File(path, "LET")
+        letDirectory.mkdirs()
+
+        //CREATE_FILE
+        val file = File(letDirectory, "Tasks.txt")
+
+        //PARSE_RECORD_INTO_A_READABLE_FORMAT
+        var record: String = "";
+
+        val SEPERATOR = "#";
+
+        record += desc + SEPERATOR
+
+        record += startTime + SEPERATOR
+
+        record += endTime + SEPERATOR
+
+        record += currDate + SEPERATOR
+
+        record += "*" //end_of_file
+
+        if (file != null) {
+            FileOutputStream(file).use {
+                it.write(record.toByteArray())
+
+                Toast.makeText(this, "Saved Task to internal storage", Toast.LENGTH_SHORT)
+                    .show();
+            }
+        } else {
+            file.appendText(record)
+        }
+    }
+
+    private fun Load() {
+        //LOAD_FROM_DISK
+        var context = applicationContext;
+        val path = context.filesDir.path
+
+        //GET_DIR
+        val letDirectory = File(path, "LET")
+
+        //FILE_IN_QUESTION
+        val file = File(letDirectory, "Tasks.txt")
+
+        if (file != null) {
+            val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+
+            var taskDescrip: String = ""
+            var taskCurrentDate: String = ""
+            var taskStartTime: String = ""
+            var taskEndTime: String = ""
+
+            var index: Int = 0;
+
+            var SEPERATOR: String = "#"
+            var END_OF_FILE: String = "*"
+
+            //TASK_DESCRIPTION
+            while (index < inputAsString.length) {
+                taskDescrip += inputAsString[index];
+
+                if (inputAsString[index].equals(SEPERATOR)) {
+                    break;
+                }
+
+                index++;
+            }
+
+            //CURRENT_DATE
+            while (index < inputAsString.length) {
+                taskCurrentDate += inputAsString[index];
+
+                if (inputAsString[index].equals(SEPERATOR)) {
+                    break;
+                }
+
+                index++;
+            }
+
+            //START_TIME
+            while (index < inputAsString.length) {
+                taskStartTime += inputAsString[index];
+
+                if (inputAsString[index].equals(SEPERATOR)) {
+                    break;
+                }
+
+                index++;
+            }
+
+            //END_TIME
+            while (index < inputAsString.length) {
+                taskEndTime += inputAsString[index];
+
+                if (inputAsString[index].equals(SEPERATOR) || inputAsString[index].equals(
+                        END_OF_FILE
+                    )
+                ) {
+                    break;
+                }
+
+                index++;
+            }
+
+            userList.add(
+                TaskData(
+                    taskDescrip,
+                    taskCurrentDate,
+                    taskStartTime,
+                    taskEndTime
+                )
+            )
+
+            taskAdapter.notifyDataSetChanged()
+
+            btnAddTask?.isEnabled = true
+
+            btnAddTask?.isEnabled = true
         }
     }
 
