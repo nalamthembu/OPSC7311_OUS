@@ -98,11 +98,20 @@
         android:background="@drawable/button_bg"/>
 
     <TextView
+        android:id="@+id/tv_minGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="280dp"
         android:layout_marginTop="450dp"
         android:text="Yini"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tv_maxGoals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_below="@+id/tv_minGoals"
+        android:text="Wenzani?"
         android:textColor="@color/black"/>
 
     <LinearLayout
