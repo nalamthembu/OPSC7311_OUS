@@ -68,6 +68,15 @@ class HomeScreenActivity : AppCompatActivity()
         recv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recv.adapter = userAdapter
 
+        userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener {
+            override fun onItemClick(position: Int) {
+
+                Toast.makeText(this@HomeScreenActivity, "You Clicked project NO: $position", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+
         //Burger Menu Action Bar
         burger_menu = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
         drawerLayout.addDrawerListener(burger_menu)
