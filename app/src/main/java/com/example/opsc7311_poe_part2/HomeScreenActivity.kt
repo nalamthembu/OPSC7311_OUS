@@ -55,7 +55,7 @@ class HomeScreenActivity : AppCompatActivity()
 
     //Camera Variables
     private  var imageView: ImageView?=null
-    private  var button: ImageButton?=null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -143,19 +143,7 @@ class HomeScreenActivity : AppCompatActivity()
             val projName = viewPopup.findViewById<EditText>(R.id.pName)
             val projDate = viewPopup.findViewById<Button>(R.id.btnPickDate) //-> old var name = pDate
 
-            //Image Picker
-            imageView = findViewById(R.id.imageView3)
-            button = findViewById(R.id.floatingActionButton)
 
-            button?.setOnClickListener{
-                Toast.makeText(applicationContext, "ButtonClicked", Toast.LENGTH_SHORT).show()
-                     ImagePicker.with(this)
-                    .crop()	    			//Crop image(Optional), Check Customization for more option
-                    .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                    .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                    .start()
-            }
-            //End Image Picker
 
             //NEW_DATE_CODE
             //Get year, month and day from calendar
@@ -178,6 +166,20 @@ class HomeScreenActivity : AppCompatActivity()
             containerPopup.addView(viewPopup)
 
             val createProj:Button = viewPopup.findViewById(R.id.btn_create_proj)
+
+            //Image Picker
+            imageView = findViewById(R.id.imageView3)
+            val button : Button = viewPopup.findViewById(R.id.floatingActionButton)
+
+            button?.setOnClickListener(){
+                Toast.makeText(applicationContext, "Button Clicked", Toast.LENGTH_SHORT).show()
+                ImagePicker.with(this)
+                    .crop()	    			//Crop image(Optional), Check Customization for more option
+                    .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                    .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                    .start()
+            }
+            //End Image Picker
 
             createProj.setOnClickListener()
             {
