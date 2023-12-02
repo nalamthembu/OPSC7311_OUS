@@ -2,6 +2,7 @@ package com.example.opsc7311_poe_part2
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.service.autofill.UserData
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -221,6 +223,7 @@ class HomeScreenActivity : AppCompatActivity()
                     {
                         if(error == null)
                         {
+                            Log.d("MyTag","Data Inserted successfully")
                             Toast.makeText(this@HomeScreenActivity, "Success: " + error?.message, Toast.LENGTH_SHORT).show()
                         }
                         else
