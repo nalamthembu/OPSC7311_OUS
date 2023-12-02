@@ -32,6 +32,8 @@ import com.example.opsc7311_poe_part2.view.UserAdapter
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -50,6 +52,10 @@ class HomeScreenActivity : AppCompatActivity()
     private lateinit var userList: ArrayList<ProjectData>
     private lateinit var userAdapter:UserAdapter
     private var dateOnPopMenu : TextView ?= null
+
+    // database
+    private lateinit var dbReference: DatabaseReference
+
     //Double Back
     private var doubleBack = false
 
@@ -67,6 +73,8 @@ class HomeScreenActivity : AppCompatActivity()
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navigation : NavigationView = findViewById(R.id.navView)
         drawButton = findViewById(R.id.ib_drawer)
+
+        dbReference = FirebaseDatabase.getInstance().getReference("Projects")
 
 
         //Create Project Sets
@@ -194,10 +202,24 @@ class HomeScreenActivity : AppCompatActivity()
                     return@setOnClickListener;
                 }
 
+                // creating unique key for db
+                val projID = dbReference.push().key!!
+
+                val project = ProjectData(projID,pName,pDate)
+
+                // checking if it went through to firebase
+
+                dbReference.child(projID).setValue(project)
+                    .addOnCompleteListener {
+                        Toast.makeText(this,"Data Inserted successfully",Toast.LENGTH_LONG).show()
+                    }.addOnFailureListener {err->
+                        Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_LONG).show()
+                    }
+
                 //ASSUMING DATE_ON_POP_UP_MENU_IS_NOT_NULL
                 val date_string = dateOnPopMenu?.text.toString()
 
-                userList.add(ProjectData(projName.text.toString(), date_string)) //OLD_CODE -> projDate.text.toString()
+                userList.add(ProjectData(projID,projName.text.toString(), date_string)) //OLD_CODE -> projDate.text.toString()
                 userAdapter.notifyDataSetChanged()
                 containerPopup.removeView(viewPopup)
                 add_project?.isEnabled = true
