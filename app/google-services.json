@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "832104982287",
-    "project_id": "opsc7311-poe-final-theous",
-    "storage_bucket": "opsc7311-poe-final-theous.appspot.com"
+    "project_number": "375739169810",
+    "project_id": "firebaas-83132",
+    "storage_bucket": "firebaas-83132.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:832104982287:android:d0af28b81973cd90f3007a",
+        "mobilesdk_app_id": "1:375739169810:android:b222168b80b0efdde2eccb",
         "android_client_info": {
           "package_name": "com.example.opsc7311_poe_part2"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAVYefHekXEwxjFlLqUnHNgiw-bhkrwVzs"
+          "current_key": "AIzaSyCB22TjKIoHT9RNCp9tCauwUwR2jcm-GxE"
         }
       ],
       "services": {
