@@ -79,7 +79,7 @@ class HomeScreenActivity : AppCompatActivity()
 
 
         val database = Firebase.database
-         val dbReference = database.getReference("Projects")
+        val dbReference = database.getReference("Projects")
 
 
         //Create Project Sets

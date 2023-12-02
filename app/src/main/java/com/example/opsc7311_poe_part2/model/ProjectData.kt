@@ -4,7 +4,7 @@ import com.example.opsc7311_poe_part2.model.CustomDate
 
 data class ProjectData(
 
-    var projectID: String? = null,
+    var projectID: String,
 
     val projectName:String,
 
