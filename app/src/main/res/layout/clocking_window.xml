@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="300dp"
     android:layout_marginTop="50dp"
     android:layout_marginLeft="50dp"
     android:layout_marginRight="50dp"
@@ -42,7 +42,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="125dp">
+                android:layout_height="110dp">
 
                 <TextView
                     android:id="@+id/txtHeaderTimeSpent"
@@ -67,33 +67,16 @@
 
             </RelativeLayout>
 
-            <!-- OLD_DATE_PICKER
-            <EditText
-                android:id="@+id/pDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#504D4D"
-                android:backgroundTint="#6C6868"
-                android:ems="10"
-                android:hint="Project due date"
-                android:inputType="date"
-                android:textColor="@color/LightGrey"
-                android:textColorHint="@color/LightGrey"
-                android:textSize="20dp"
-                android:translationY="-40dp" />
-    END_OF_OLD_DATE_PICKER
--->
-            <!-- NEW_DATE_PICKER_CODE -->
-
-            <!-- END_OF_NEW_DATE_PICKER -->
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <Button
-                    android:id="@+id/btn_cancel_proj"
+                    android:id="@+id/btnCancelStopwatch"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:layout_centerInParent="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/popup_border"
@@ -101,14 +84,16 @@
                     android:textColor="@color/white" />
 
                 <Button
-                    android:id="@+id/btnClockButton"
+                    android:id="@+id/btnClock"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:layout_above="@id/btnCancelStopwatch"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="190dp"
-                    android:text="CLOCK_STATUS"
-                    android:textColor="@color/white"
-                    android:background="@drawable/accent_orange_fill"/>
+                    android:background="@drawable/popup_border"
+                    android:text="Clock In"
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 
