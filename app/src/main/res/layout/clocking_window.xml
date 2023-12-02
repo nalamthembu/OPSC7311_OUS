@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="400dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/accent_orange_fill"
+        android:orientation="vertical"
+        android:padding="6dp"
+        >
+
+        <TextView
+            android:id="@+id/txtClockingHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clocking"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:translationY="3dp">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/BackgroundGrey"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="125dp">
+
+                <TextView
+                    android:id="@+id/txtHeaderTimeSpent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@color/AccentOrange"
+                    android:text="Time Spent"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/txtTimeSpent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtHeaderTimeSpent"
+                    android:layout_centerInParent="true"
+                    android:background="@color/AccentOrange"
+                    android:text="0:00"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp" />
+
+            </RelativeLayout>
+
+            <!-- OLD_DATE_PICKER
+            <EditText
+                android:id="@+id/pDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#504D4D"
+                android:backgroundTint="#6C6868"
+                android:ems="10"
+                android:hint="Project due date"
+                android:inputType="date"
+                android:textColor="@color/LightGrey"
+                android:textColorHint="@color/LightGrey"
+                android:textSize="20dp"
+                android:translationY="-40dp" />
+    END_OF_OLD_DATE_PICKER
+-->
+            <!-- NEW_DATE_PICKER_CODE -->
+
+            <!-- END_OF_NEW_DATE_PICKER -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/btn_cancel_proj"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/popup_border"
+                    android:text="CANCEL"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btnClockButton"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="190dp"
+                    android:text="CLOCK_STATUS"
+                    android:textColor="@color/white"
+                    android:background="@drawable/accent_orange_fill"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
