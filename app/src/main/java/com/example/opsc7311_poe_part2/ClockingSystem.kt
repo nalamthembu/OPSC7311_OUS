@@ -2,11 +2,20 @@ package com.example.opsc7311_poe_part2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.core.app.NavUtils
 import kotlin.time.*
 
 class ClockingSystem : AppCompatActivity()
 {
+
+    //UI Buttons
+    private lateinit var btnClock: Button;
+    private lateinit var btnCancel: Button;
+
+    //UI Text
+    private lateinit var txtClock : TextView;
 
     //Variables
     private var currentClockStatus: Boolean = false;
@@ -15,6 +24,7 @@ class ClockingSystem : AppCompatActivity()
     private var currentTime: TimeSource.Monotonic? = null;
     private var firstMark: Duration? = null;
     private var secondMark: Duration? = null;
+    private var clockStarted : Boolean = false;
 
     @OptIn(ExperimentalTime::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +34,25 @@ class ClockingSystem : AppCompatActivity()
         //Initialise CurrentTime
         val cTime = TimeSource.Monotonic;
         currentTime = TimeSource.Monotonic;
+
+        //Initialise UI
+        btnClock = findViewById(R.id.btnClock);
+        btnCancel = findViewById(R.id.btnCancelStopwatch);
+
+        //TO-DO : Need a way to change this every frame.
+        txtClock = findViewById(R.id.txtTimeSpent);
+
+        btnClock?.setOnClickListener()
+        {
+            //Toggle Clock In Button
+            clockStarted = !clockStarted;
+            SetClockStatus(clockStarted);
+        }
+
+        btnCancel?.setOnClickListener()
+        {
+            //TO-DO : Give us a "Are you sure you want to cancel this session?"
+        }
     }
 
     //Called when you need to know the start time (always 0:00:00)
