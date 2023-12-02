@@ -33,6 +33,11 @@ class ProjectDashboard : AppCompatActivity()
     private lateinit var taskAdapter: TaskAdapter
     var btnAddTask : ImageButton ?= null
 
+    //Punch in System Global Vars
+    var btnPunchInClock : ImageButton ?= null;
+    var menuPunchIn : TextView ?= null;
+    //End of Punch In Global Vars
+
 
     private var dateOnPopMenu : TextView ?= null
     private  var imageView: ImageView?=null
@@ -40,6 +45,40 @@ class ProjectDashboard : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_dashboard)
+
+        //START OF PUNCH IN CODE
+        btnPunchInClock = findViewById(R.id.btnPunchInClock);
+
+        btnPunchInClock?.setOnClickListener()
+        {
+            val taskInflater = LayoutInflater.from(applicationContext)
+            val viewTask = taskInflater.inflate(R.layout.activity_clocking_system,null)
+            val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
+
+            val params = RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+            )
+
+            params.addRule(RelativeLayout.CENTER_IN_PARENT)
+            viewTask.layoutParams = params
+            taskContainer.addView(viewTask)
+
+            val clockButton: Button = viewTask.findViewById(R.id.btnClock)
+            val cancelButton: Button = viewTask.findViewById(R.id.btnCancelStopwatch)
+
+            clockButton?.setOnClickListener()
+            {
+                Toast.makeText(this, "Starting Timer", Toast.LENGTH_SHORT)
+            }
+
+            cancelButton?.setOnClickListener()
+            {
+                //TO-DO : Give us a "Are you sure you want to cancel this session?"
+            }
+        };
+
+        //END OF PUNCH IN CODE
 
         val bundle: Bundle? = intent.extras
         val projName = bundle!!.getString("project_name")

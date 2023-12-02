@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.NavUtils
 import kotlin.time.*
 
 class ClockingSystem : AppCompatActivity()
 {
-
     //UI Buttons
     private lateinit var btnClock: Button;
     private lateinit var btnCancel: Button;
@@ -26,8 +26,10 @@ class ClockingSystem : AppCompatActivity()
     private var secondMark: Duration? = null;
     private var clockStarted : Boolean = false;
 
+
     @OptIn(ExperimentalTime::class)
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clocking_system)
 
@@ -42,18 +44,11 @@ class ClockingSystem : AppCompatActivity()
         //TO-DO : Need a way to change this every frame.
         txtClock = findViewById(R.id.txtTimeSpent);
 
-        btnClock?.setOnClickListener()
-        {
-            //Toggle Clock In Button
-            clockStarted = !clockStarted;
-            SetClockStatus(clockStarted);
-        }
-
-        btnCancel?.setOnClickListener()
-        {
-            //TO-DO : Give us a "Are you sure you want to cancel this session?"
-        }
     }
+
+    //Public Accessor
+    public fun SetClockStarted(value : Boolean) {clockStarted = value;}
+
 
     //Called when you need to know the start time (always 0:00:00)
     public fun getFirstMark() : Duration? {
@@ -67,6 +62,7 @@ class ClockingSystem : AppCompatActivity()
 
     //Called when you need to know the end time (variable)
     public fun getSecondMark() : Duration? {
+
         if (secondMark == null) {
             error("The second mark isn't initialised!");
             return null;
@@ -90,6 +86,7 @@ class ClockingSystem : AppCompatActivity()
             firstMark = currentTime?.markNow()?.elapsedNow();
             //Start up the clock
             currentClockStatus = true;
+
         }
 
         if (currentClockStatus && status == false) {

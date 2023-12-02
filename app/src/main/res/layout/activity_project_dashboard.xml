@@ -39,7 +39,7 @@
             android:layout_marginStart="-4dp"
             android:layout_marginTop="-1dp"
             android:background="@color/BackgroundGrey"
-            tools:srcCompat="@color/BackgroundGrey" />
+            tools:srcCompat="@color/BackgroundGrey"/>
 
         <ImageView
             android:id="@+id/Line"
@@ -187,6 +187,18 @@
             android:layout_marginEnd="0dp"
             android:fadeScrollbars="true"
             android:scrollbars="vertical" />
+
+<!-- PUNCH_IN_TIME CLOCK -->
+        <ImageButton
+            android:id="@+id/btnPunchInClock"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:background="#00FFFFFF"
+            android:src="@drawable/baseline_punch_clock_24" />
+<!-- END OF CLOCK -->
 
         <ImageButton
             android:id="@+id/ib_drawer"
