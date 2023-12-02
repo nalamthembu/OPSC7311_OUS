@@ -32,8 +32,12 @@ import com.example.opsc7311_poe_part2.view.UserAdapter
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.Firebase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -53,8 +57,7 @@ class HomeScreenActivity : AppCompatActivity()
     private lateinit var userAdapter:UserAdapter
     private var dateOnPopMenu : TextView ?= null
 
-    // database
-    private lateinit var dbReference: DatabaseReference
+
 
     //Double Back
     private var doubleBack = false
@@ -74,7 +77,9 @@ class HomeScreenActivity : AppCompatActivity()
         val navigation : NavigationView = findViewById(R.id.navView)
         drawButton = findViewById(R.id.ib_drawer)
 
-        dbReference = FirebaseDatabase.getInstance().getReference("Projects")
+
+        val database = Firebase.database
+         val dbReference = database.getReference("Projects")
 
 
         //Create Project Sets
@@ -207,14 +212,25 @@ class HomeScreenActivity : AppCompatActivity()
 
                 val project = ProjectData(projID,pName,pDate)
 
+                dbReference.child(projID).push().setValue(project)
                 // checking if it went through to firebase
-
-                dbReference.child(projID).setValue(project)
-                    .addOnCompleteListener {
-                        Toast.makeText(this,"Data Inserted successfully",Toast.LENGTH_LONG).show()
-                    }.addOnFailureListener {err->
-                        Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_LONG).show()
+                val pushRef = dbReference.push()
+                pushRef.setValue(project, object: DatabaseReference.CompletionListener
+                {
+                    override fun onComplete(error: DatabaseError?, ref: DatabaseReference)
+                    {
+                        if(error == null)
+                        {
+                            Toast.makeText(this@HomeScreenActivity, "Success: " + error?.message, Toast.LENGTH_SHORT).show()
+                        }
+                        else
+                        {
+                            println("Failure: " + error.message)
+                            Toast.makeText(this@HomeScreenActivity, "Failure: " + error.message, Toast.LENGTH_SHORT).show()
+                        }
                     }
+                })
+
 
                 //ASSUMING DATE_ON_POP_UP_MENU_IS_NOT_NULL
                 val date_string = dateOnPopMenu?.text.toString()
