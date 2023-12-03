@@ -161,9 +161,6 @@ class ProjectDashboard : AppCompatActivity()
                     return@setOnClickListener;
                 }
 
-                //ASSUMING DATE_ON_POP_UP_MENU_IS_NOT_NULL
-                //val date_string = dateOnPopMenu?.text.toString()
-
                 //Image Picker
                 imageView = findViewById(R.id.imageView)
                 val button : Button = viewTask.findViewById(R.id.floatingActionButton)
@@ -181,17 +178,17 @@ class ProjectDashboard : AppCompatActivity()
                 userList.add(
                     TaskData(
                         taskDescrip.text.toString(),
-                        tCurrDate/*taskCurrDate.text.toString()*/,
+                        tCurrDate,
                         taskStartTime.text.toString(),
                         taskEndTime.text.toString()
                     )
-                ) //OLD_CODE -> projDate.text.toString()
+                )
+
                 taskAdapter.notifyDataSetChanged()
-                taskContainer.removeView(viewTask)
-                btnAddTask?.isEnabled = true
 
                 taskContainer.removeView(viewTask)
                 btnAddTask?.isEnabled = true
+
 
                 //SAVE_INFORMATION
                 Save(tDescrip, tStartTime, tEndTime, tCurrDate);
@@ -255,6 +252,11 @@ class ProjectDashboard : AppCompatActivity()
         //LOAD_FROM_DISK
         var context = applicationContext;
         val path = context.filesDir.path
+
+        //ADDED FROM CREATE TASK CODE
+        val taskInflater = LayoutInflater.from(applicationContext)
+        val viewTask = taskInflater.inflate(R.layout.create_task,null)
+        val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
 
         //GET_DIR
         val letDirectory = File(path, "LET")
@@ -323,6 +325,17 @@ class ProjectDashboard : AppCompatActivity()
                 index++;
             }
 
+            userList.clear();
+
+            //SET THESE
+
+            val taskDescrip_ = viewTask.findViewById<EditText>(R.id.tDescription)
+            val btnCurrentTaskDate_ = viewTask.findViewById<Button>(R.id.tCurrentDate)
+            val taskStartTime_ = viewTask.findViewById<EditText>(R.id.tStartTime)
+            val taskEndTime_ = viewTask.findViewById<EditText>(R.id.tEndTime)
+
+
+
             userList.add(
                 TaskData(
                     taskDescrip,
@@ -333,8 +346,6 @@ class ProjectDashboard : AppCompatActivity()
             )
 
             taskAdapter.notifyDataSetChanged()
-
-            btnAddTask?.isEnabled = true
 
             btnAddTask?.isEnabled = true
         }
