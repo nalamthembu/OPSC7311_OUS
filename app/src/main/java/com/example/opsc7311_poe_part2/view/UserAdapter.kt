@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.opsc7311_poe_part2.R
 import com.example.opsc7311_poe_part2.model.ProjectData
 
-class UserAdapter(val c:Context,val userList: ArrayList<ProjectData>): RecyclerView.Adapter<UserAdapter.UserViewHolder>()
+
+class UserAdapter(val userList: ArrayList<ProjectData>): RecyclerView.Adapter<UserAdapter.UserViewHolder>()
 {
 
     // clickable
