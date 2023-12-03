@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import android.content.Context
+import android.view.Choreographer
 import android.widget.ImageView
 import com.github.dhaval2404.imagepicker.ImagePicker
 import java.io.File
@@ -38,6 +39,8 @@ class ProjectDashboard : AppCompatActivity()
     //Punch in System Global Vars
     var btnPunchInClock : ImageButton ?= null;
     var clockSystem : ClockingSystem ?= null;
+    var clockHasStarted : Boolean = false;
+    var timeSpent : TextView ?= null;
     //End of Punch In Global Vars
 
 
@@ -68,13 +71,17 @@ class ProjectDashboard : AppCompatActivity()
             viewTask.layoutParams = params
             taskContainer.addView(viewTask)
 
-            var btnClockIn : Button = viewTask.findViewById(R.id.btnClockInOut);
+            var btnClockIn: Button = viewTask.findViewById(R.id.btnClockInOut);
 
-            
+            timeSpent = viewTask.findViewById(R.id.txtTimeSpent);
+
+            //How do I link this to the view??
+            clockSystem = ClockingSystem();
 
             btnClockIn.setOnClickListener()
             {
-
+                clockHasStarted = !clockHasStarted;
+                clockSystem?.SetClockStarted(clockHasStarted);
             }
         }
 
