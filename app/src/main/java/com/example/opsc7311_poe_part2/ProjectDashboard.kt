@@ -23,6 +23,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import kotlin.system.exitProcess
 import kotlin.time.Duration
 
 class ProjectDashboard : AppCompatActivity()
@@ -50,9 +51,9 @@ class ProjectDashboard : AppCompatActivity()
         //START OF PUNCH IN CODE
 
         btnPunchInClock = findViewById(R.id.btnPunchInClock)
+
         btnPunchInClock?.setOnClickListener()
         {
-
             val taskInflater = LayoutInflater.from(applicationContext)
             val viewTask = taskInflater.inflate(R.layout.activity_clocking_system, null)
             val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
@@ -66,12 +67,11 @@ class ProjectDashboard : AppCompatActivity()
             viewTask.layoutParams = params
             taskContainer.addView(viewTask)
 
-            var btnClockInOut: Button = findViewById(R.id.btnClockInOut)
+            var btnClockIn : Button = viewTask.findViewById(R.id.btnClockInOut);
 
-            //If we press the clock in button
-            btnClockInOut.setOnClickListener()
+            btnClockIn.setOnClickListener()
             {
-                Toast.makeText(this, "Should clock in", Toast.LENGTH_SHORT);
+                
             }
         }
 
