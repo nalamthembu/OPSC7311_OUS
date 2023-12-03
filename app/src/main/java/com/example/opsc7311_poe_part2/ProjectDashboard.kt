@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import android.content.Context
+import android.content.Intent
 import android.view.Choreographer
 import android.widget.ImageView
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -38,7 +39,6 @@ class ProjectDashboard : AppCompatActivity()
 
     //Punch in System Global Vars
     var btnPunchInClock : ImageButton ?= null;
-    var clockSystem : ClockingSystem ?= null;
     var clockHasStarted : Boolean = false;
     var timeSpent : TextView ?= null;
     //End of Punch In Global Vars
@@ -75,13 +75,11 @@ class ProjectDashboard : AppCompatActivity()
 
             timeSpent = viewTask.findViewById(R.id.txtTimeSpent);
 
-            //How do I link this to the view??
-            clockSystem = ClockingSystem();
-
+            //HOW DO I LINK THE VIEW AND THE ACTIVITY WITH ALL THE METHODS???
             btnClockIn.setOnClickListener()
             {
                 clockHasStarted = !clockHasStarted;
-                clockSystem?.SetClockStarted(clockHasStarted);
+
             }
         }
 
