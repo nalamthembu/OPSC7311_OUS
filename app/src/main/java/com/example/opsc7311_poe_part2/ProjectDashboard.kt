@@ -37,7 +37,7 @@ class ProjectDashboard : AppCompatActivity()
 
     //Punch in System Global Vars
     var btnPunchInClock : ImageButton ?= null;
-    var menuPunchIn : TextView ?= null;
+    var clockSystem : ClockingSystem ?= null;
     //End of Punch In Global Vars
 
 
@@ -54,6 +54,7 @@ class ProjectDashboard : AppCompatActivity()
 
         btnPunchInClock?.setOnClickListener()
         {
+
             val taskInflater = LayoutInflater.from(applicationContext)
             val viewTask = taskInflater.inflate(R.layout.activity_clocking_system, null)
             val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
@@ -69,9 +70,11 @@ class ProjectDashboard : AppCompatActivity()
 
             var btnClockIn : Button = viewTask.findViewById(R.id.btnClockInOut);
 
+            
+
             btnClockIn.setOnClickListener()
             {
-                
+
             }
         }
 
