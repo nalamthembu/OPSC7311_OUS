@@ -84,11 +84,12 @@ class HomeScreenActivity : AppCompatActivity()
         val dbReference = database.getReference("Projects")
 
 
+
         //Create Project Sets
         add_project = findViewById(R.id.Add_Project)
         recv = findViewById(R.id.myRecycler)
         userList = ArrayList()
-        userAdapter = UserAdapter(this, userList as ArrayList<ProjectData>)
+        userAdapter = UserAdapter(userList as ArrayList<ProjectData>)
         recv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recv.adapter = userAdapter
 
@@ -254,6 +255,11 @@ class HomeScreenActivity : AppCompatActivity()
                 containerPopup.removeView(viewPopup)
             }
         }
+
+        // adds projects from firebase if any was created
+        val fetchProjects = Intent(this,FetchDataFromDataBaseProjects::class.java)
+        //startActivity(fetchProjects)
+
     }
 
     private fun GoToProjectDashboard()

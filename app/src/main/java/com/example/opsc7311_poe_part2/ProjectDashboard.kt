@@ -47,7 +47,8 @@ class ProjectDashboard : AppCompatActivity()
     private var dateOnPopMenu : TextView ?= null
     private  var imageView: ImageView?=null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_dashboard)
 
@@ -207,6 +208,7 @@ class ProjectDashboard : AppCompatActivity()
             onBackPressed()
         }
 
+        Load()
     }
 
     private fun Save(desc : String, startTime : String, endTime : String, currDate : String )
@@ -260,7 +262,8 @@ class ProjectDashboard : AppCompatActivity()
         //FILE_IN_QUESTION
         val file = File(letDirectory, "Tasks.txt")
 
-        if (file != null) {
+        if (file != null)
+        {
             val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
 
             var taskDescrip: String = ""
@@ -334,6 +337,10 @@ class ProjectDashboard : AppCompatActivity()
             btnAddTask?.isEnabled = true
 
             btnAddTask?.isEnabled = true
+        }
+        else
+        {
+            Toast.makeText(this, "Opened Project", Toast.LENGTH_LONG).show()
         }
     }
 
