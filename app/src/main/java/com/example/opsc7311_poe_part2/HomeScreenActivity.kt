@@ -132,7 +132,7 @@ class HomeScreenActivity : AppCompatActivity()
             when(it.itemId){
                 R.id.item_inbox -> Toast.makeText(applicationContext, "Clicked Inbox",Toast.LENGTH_SHORT).show()
                 R.id.item_notifs -> Toast.makeText(applicationContext, "Clicked Notifications", Toast.LENGTH_SHORT).show()
-                R.id.item_timeline_view -> Toast.makeText(applicationContext, "Clicked Timeline View", Toast.LENGTH_SHORT).show()
+                R.id.item_timeline_view -> startActivity(Intent(this,TimelineView::class.java))
                 R.id.item_daily_goals -> startActivity(Intent(this,DGoals::class.java))
                 R.id.item_sign_out -> startActivity(Intent(this, MainActivity::class.java))
                 R.id.item_settings -> Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_SHORT).show()
