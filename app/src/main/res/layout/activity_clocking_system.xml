@@ -84,7 +84,7 @@
                     android:textColor="@color/white" />
 
                 <Button
-                    android:id="@+id/btnClock"
+                    android:id="@+id/btnClockInOut"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_above="@id/btnCancelStopwatch"

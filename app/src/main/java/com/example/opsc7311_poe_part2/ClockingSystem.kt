@@ -38,7 +38,7 @@ class ClockingSystem : AppCompatActivity()
         currentTime = TimeSource.Monotonic;
 
         //Initialise UI
-        btnClock = findViewById(R.id.btnClock);
+        btnClock = findViewById(R.id.btnClockInOut);
         btnCancel = findViewById(R.id.btnCancelStopwatch);
 
         //TO-DO : Need a way to change this every frame.

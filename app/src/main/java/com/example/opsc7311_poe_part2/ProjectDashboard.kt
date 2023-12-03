@@ -23,6 +23,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import kotlin.time.Duration
 
 class ProjectDashboard : AppCompatActivity()
 {
@@ -47,12 +48,13 @@ class ProjectDashboard : AppCompatActivity()
         setContentView(R.layout.activity_project_dashboard)
 
         //START OF PUNCH IN CODE
-        btnPunchInClock = findViewById(R.id.btnPunchInClock);
 
+        btnPunchInClock = findViewById(R.id.btnPunchInClock)
         btnPunchInClock?.setOnClickListener()
         {
+
             val taskInflater = LayoutInflater.from(applicationContext)
-            val viewTask = taskInflater.inflate(R.layout.activity_clocking_system,null)
+            val viewTask = taskInflater.inflate(R.layout.activity_clocking_system, null)
             val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
 
             val params = RelativeLayout.LayoutParams(
@@ -64,19 +66,14 @@ class ProjectDashboard : AppCompatActivity()
             viewTask.layoutParams = params
             taskContainer.addView(viewTask)
 
-            val clockButton: Button = viewTask.findViewById(R.id.btnClock)
-            val cancelButton: Button = viewTask.findViewById(R.id.btnCancelStopwatch)
+            var btnClockInOut: Button = findViewById(R.id.btnClockInOut)
 
-            clockButton?.setOnClickListener()
+            //If we press the clock in button
+            btnClockInOut.setOnClickListener()
             {
-                Toast.makeText(this, "Starting Timer", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Should clock in", Toast.LENGTH_SHORT);
             }
-
-            cancelButton?.setOnClickListener()
-            {
-                //TO-DO : Give us a "Are you sure you want to cancel this session?"
-            }
-        };
+        }
 
         //END OF PUNCH IN CODE
 
