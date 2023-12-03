@@ -200,7 +200,7 @@ class HomeScreenActivity : AppCompatActivity()
             {
 
                 val pName = projName.text.toString()
-                val pDate = projDate.text.toString()
+                val pDate = dateOnPopMenu?.text.toString()
 
                 //TO-DO : NEED TO VALIDATE DATE
                 if (pName.isNullOrBlank()) {
@@ -214,7 +214,7 @@ class HomeScreenActivity : AppCompatActivity()
 
                 val project = ProjectData(projID,pName,pDate)
 
-                dbReference.child(projID).push().setValue(project)
+                //dbReference.child(projID).push().setValue(project)
                 // checking if it went through to firebase
                 val pushRef = dbReference.push()
                 pushRef.setValue(project, object: DatabaseReference.CompletionListener
@@ -258,6 +258,7 @@ class HomeScreenActivity : AppCompatActivity()
 
     private fun GoToProjectDashboard()
     {
+
     }
 
 
