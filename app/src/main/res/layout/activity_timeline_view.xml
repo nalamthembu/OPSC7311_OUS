@@ -35,6 +35,23 @@
         android:background="@color/AccentOrange"
         tools:srcCompat="@color/AccentOrange" />
 
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp">
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/line_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </com.github.mikephil.charting.charts.LineChart>
+    </RelativeLayout>
+
     <ImageView
         android:id="@+id/iv_tokoloshe"
         android:layout_width="match_parent"
