@@ -36,19 +36,12 @@
         tools:srcCompat="@color/AccentOrange" />
 
     <ImageView
-        android:id="@+id/iv_tokoloshe"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="-38dp"
-        android:layout_marginTop="313dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="34dp"
-        app:srcCompat="@drawable/tokoloshe" />
+        android:id="@+id/ivImage"
+        android:layout_width="450dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="350dp"
+        app:srcCompat="@drawable/tokoloshiedailygoals"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:layout_width="50dp"
@@ -68,14 +61,7 @@
         android:text="MINS"
         android:textColor="@color/white" />
 
-    <ImageView
-        android:layout_width="165dp"
-        android:layout_height="150dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="200dp"
-        android:src="@drawable/speach_bubble" />
+
 
     <Button
         android:id="@+id/btn_set_min"
@@ -97,22 +83,7 @@
         android:textColor="@color/white"
         android:background="@drawable/button_bg"/>
 
-    <TextView
-        android:id="@+id/tv_minGoals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="450dp"
-        android:text="Yini"
-        android:textColor="@color/black"/>
-    <TextView
-        android:id="@+id/tv_maxGoals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_below="@+id/tv_minGoals"
-        android:text="Wenzani?"
-        android:textColor="@color/black"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"

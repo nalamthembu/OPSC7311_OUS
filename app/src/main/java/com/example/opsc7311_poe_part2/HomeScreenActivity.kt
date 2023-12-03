@@ -28,6 +28,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.opsc7311_poe_part2.model.ProjectData
 import com.example.opsc7311_poe_part2.view.TaskAdapter
 import com.example.opsc7311_poe_part2.view.UserAdapter
@@ -83,7 +84,10 @@ class HomeScreenActivity : AppCompatActivity()
         val database = Firebase.database
         val dbReference = database.getReference("Projects")
 
-
+        //GiffManager Start
+        val imageView = findViewById<ImageView>(R.id.ivImage)
+        Glide.with(this).load(R.drawable.tokoloshie).into(imageView)
+        //GiffManager End
 
         //Create Project Sets
         add_project = findViewById(R.id.Add_Project)
@@ -183,19 +187,19 @@ class HomeScreenActivity : AppCompatActivity()
 
             val createProj:Button = viewPopup.findViewById(R.id.btn_create_proj)
 
-            //Image Picker
+            /*Image Picker
             imageView = findViewById(R.id.imageView3)
             val button : Button = viewPopup.findViewById(R.id.floatingActionButton)
 
-            button?.setOnClickListener(){
+           /* button?.setOnClickListener(){
                 Toast.makeText(applicationContext, "Button Clicked", Toast.LENGTH_SHORT).show()
                 ImagePicker.with(this)
                     .crop()	    			//Crop image(Optional), Check Customization for more option
                     .compress(1024)			//Final image size will be less than 1 MB(Optional)
                     .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                     .start()
-            }
-            //End Image Picker
+            }*/
+            End Image Picker*/
 
             createProj.setOnClickListener()
             {

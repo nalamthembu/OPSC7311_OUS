@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.NumberPicker
 import android.widget.TextView
+import com.bumptech.glide.Glide
 
 class DGoals : AppCompatActivity() {
     //Home Button
@@ -43,9 +45,12 @@ class DGoals : AppCompatActivity() {
         //set values for displaying
         var hours = 0
         var mins = 0
+
+        val imageView = findViewById<ImageView>(R.id.ivImage)
+        Glide.with(this).load(R.drawable.tokoloshiedailygoals).into(imageView)
+
         //set display texts
-        mn = findViewById(R.id.tv_minGoals)
-        mx = findViewById(R.id.tv_maxGoals)
+
 
         numPickHs.setOnValueChangedListener{
             numberPicker, i, i2 -> hours = numberPicker.value
@@ -56,11 +61,11 @@ class DGoals : AppCompatActivity() {
         }
 
         btnMin?.setOnClickListener(){
-            mn?.text = "Minimum Goal: $hours h $mins m"
+
         }
 
         btnMax?.setOnClickListener(){
-            mx?.text = "Maximum Goal: $hours h $mins m"
+
         }
 
         buttonHome?.setOnClickListener(){

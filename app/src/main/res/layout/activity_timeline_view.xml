@@ -53,18 +53,11 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/iv_tokoloshe"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="-38dp"
-        android:layout_marginTop="313dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="34dp"
-        app:srcCompat="@drawable/tokoloshe" />
+        android:id="@+id/ivImage"
+        android:layout_width="450dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="450dp"
+        app:srcCompat="@drawable/tokoloshietime"
+        tools:ignore="MissingConstraints" />
 
 </RelativeLayout>

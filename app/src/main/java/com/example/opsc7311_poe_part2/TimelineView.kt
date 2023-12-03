@@ -13,6 +13,8 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 import android.widget.ImageButton
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 class TimelineView : AppCompatActivity() {
 
@@ -48,6 +50,10 @@ class TimelineView : AppCompatActivity() {
         linechart.data = lineset
         linedata.setColors(ColorTemplate.MATERIAL_COLORS,255)
         linedata.valueTextColor = Color.WHITE
+
+
+        val imageView = findViewById<ImageView>(R.id.ivImage)
+        Glide.with(this).load(R.drawable.tokoloshietime).into(imageView)
 
         buttonHome?.setOnClickListener(){
             onBackPressed()
