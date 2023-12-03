@@ -31,18 +31,23 @@ class TimelineView : AppCompatActivity() {
         linechart = findViewById(R.id.line_chart)
 
         data = ArrayList()
-        data.add(Entry(10f,100f))
-        data.add(Entry(20f,500f))
-        data.add(Entry(30f,300f))
-        data.add(Entry(40f,150f))
-        data.add(Entry(50f,750f))
+        data.add(Entry(50f,100f))
+        data.add(Entry(100f,100f))
+        data.add(Entry(150f,500f))
+        data.add(Entry(200f,500f))
+        data.add(Entry(250f,300f))
+        data.add(Entry(300f,300f))
+        data.add(Entry(350f,150f))
+        data.add(Entry(400f,150f))
+        data.add(Entry(450f,750f))
+        data.add(Entry(1000f,750f))
 
         linedata = LineDataSet(data,"Entries")
         lineset = LineData(linedata)
 
         linechart.data = lineset
         linedata.setColors(ColorTemplate.MATERIAL_COLORS,255)
-        linedata!!.valueTextColor = Color.WHITE
+        linedata.valueTextColor = Color.WHITE
 
         buttonHome?.setOnClickListener(){
             onBackPressed()
