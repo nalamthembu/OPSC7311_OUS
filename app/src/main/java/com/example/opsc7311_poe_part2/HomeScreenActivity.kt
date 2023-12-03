@@ -261,7 +261,7 @@ class HomeScreenActivity : AppCompatActivity()
         }
 
         // adds projects from firebase if any was created
-        val fetchProjects = Intent(this,FetchDataFromDataBaseProjects::class.java)
+        //val fetchProjects = Intent(this,FetchDataFromDataBaseProjects::class.java)
         //startActivity(fetchProjects)
 
     }

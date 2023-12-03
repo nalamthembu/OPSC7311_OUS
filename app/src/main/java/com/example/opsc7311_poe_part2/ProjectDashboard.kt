@@ -103,6 +103,8 @@ class ProjectDashboard : AppCompatActivity()
         recv?.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         recv?.adapter = taskAdapter
 
+        Load()
+
 // adding task to project popup
         btnAddTask?.setOnClickListener(){
             btnAddTask?.isEnabled = false
@@ -206,7 +208,7 @@ class ProjectDashboard : AppCompatActivity()
             onBackPressed()
         }
 
-        Load()
+
     }
 
     private fun Save(desc : String, startTime : String, endTime : String, currDate : String )
