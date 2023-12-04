@@ -10,6 +10,7 @@ import android.widget.NumberPicker
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.opsc7311_poe_part2.model.MinMaxGoals
 import com.google.firebase.Firebase
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -73,11 +74,11 @@ class DGoals : AppCompatActivity() {
 
         btnMin?.setOnClickListener(){
 
-            val orders = Orders(hours, mins)
+            val orders = MinMaxGoals(hours, mins)
 
-            dbReference.push().setValue(hours,mins)
+            //dbReference.push().setValue(orders)
             val pushRef = dbReference.push()
-            pushRef.setValue(hours,mins, object :DatabaseReference.CompletionListener
+            pushRef.setValue(orders, object :DatabaseReference.CompletionListener
             {
                 override fun onComplete(error: DatabaseError?, ref: DatabaseReference)
                 {
@@ -95,7 +96,25 @@ class DGoals : AppCompatActivity() {
         }
 
         btnMax?.setOnClickListener(){
+            val orders = MinMaxGoals(hours, mins)
 
+            //dbReference.push().setValue(orders)
+            val pushRef = dbReference.push()
+            pushRef.setValue(orders, object :DatabaseReference.CompletionListener
+            {
+                override fun onComplete(error: DatabaseError?, ref: DatabaseReference)
+                {
+                    if(error == null)
+                    {
+                        Toast.makeText(this@DGoals, "Success: " + error?.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                    {
+                        println("Failure: " + error.message)
+                        Toast.makeText(this@DGoals, "Failure: " + error.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
 
         }
 

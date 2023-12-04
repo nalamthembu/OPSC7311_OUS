@@ -19,36 +19,48 @@ import java.util.Calendar
 import java.util.Locale
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.SystemClock
+import android.util.Log
 import android.view.Choreographer
 import android.widget.ImageView
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.Firebase
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import kotlin.system.exitProcess
 import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
+import kotlin.time.TimeSource
 
-class ProjectDashboard : AppCompatActivity()
-{
-    var btnHome : ImageButton ?= null
-    var txtProjectName : TextView ?= null
-    private var recv:RecyclerView ?=null
+class ProjectDashboard : AppCompatActivity() {
+    var btnHome: ImageButton? = null
+    var txtProjectName: TextView? = null
+    private var recv: RecyclerView? = null
     private lateinit var userList: ArrayList<TaskData>
     private lateinit var taskAdapter: TaskAdapter
-    var btnAddTask : ImageButton ?= null
+    var btnAddTask: ImageButton? = null
 
     //Punch in System Global Vars
-    var btnPunchInClock : ImageButton ?= null;
-    var clockHasStarted : Boolean = false;
-    var timeSpent : TextView ?= null;
+    var btnPunchInClock: ImageButton? = null;
+    var clockHasStarted: Boolean = false;
+    var timeSpent: TextView? = null;
+
+    private var running = false
+    private var startTime: Long = 0
+    private val handler = Handler()
+    private var lastFrameTimeNanos: Long = 0
     //End of Punch In Global Vars
 
 
-    private var dateOnPopMenu : TextView ?= null
-    private  var imageView: ImageView?=null
+    private var dateOnPopMenu: TextView? = null
+    private var imageView: ImageView? = null
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_dashboard)
 
@@ -58,7 +70,6 @@ class ProjectDashboard : AppCompatActivity()
 
         btnPunchInClock?.setOnClickListener()
         {
-
             val taskInflater = LayoutInflater.from(applicationContext)
             val viewTask = taskInflater.inflate(R.layout.activity_clocking_system, null)
             val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
@@ -76,12 +87,6 @@ class ProjectDashboard : AppCompatActivity()
 
             timeSpent = viewTask.findViewById(R.id.txtTimeSpent);
 
-            //HOW DO I LINK THE VIEW AND THE ACTIVITY WITH ALL THE METHODS???
-            btnClockIn.setOnClickListener()
-            {
-                clockHasStarted = !clockHasStarted;
-
-            }
         }
 
         //END OF PUNCH IN CODE
@@ -100,16 +105,16 @@ class ProjectDashboard : AppCompatActivity()
         recv = findViewById(R.id.myRecycler)
         userList = ArrayList()
         taskAdapter = TaskAdapter(this, userList as ArrayList<TaskData>)
-        recv?.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+        recv?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recv?.adapter = taskAdapter
 
         Load()
 
 // adding task to project popup
-        btnAddTask?.setOnClickListener(){
+        btnAddTask?.setOnClickListener() {
             btnAddTask?.isEnabled = false
             val taskInflater = LayoutInflater.from(applicationContext)
-            val viewTask = taskInflater.inflate(R.layout.create_task,null)
+            val viewTask = taskInflater.inflate(R.layout.create_task, null)
             val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
 
             val params = RelativeLayout.LayoutParams(
@@ -163,14 +168,17 @@ class ProjectDashboard : AppCompatActivity()
 
                 //Image Picker
                 imageView = findViewById(R.id.imageView)
-                val button : Button = viewTask.findViewById(R.id.floatingActionButton)
+                val button: Button = viewTask.findViewById(R.id.floatingActionButton)
 
-                button?.setOnClickListener(){
+                button?.setOnClickListener() {
                     Toast.makeText(applicationContext, "Button Clicked", Toast.LENGTH_SHORT).show()
                     ImagePicker.with(this)
-                        .crop()	    			//Crop image(Optional), Check Customization for more option
-                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .crop()                    //Crop image(Optional), Check Customization for more option
+                        .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(
+                            1080,
+                            1080
+                        )    //Final image resolution will be less than 1080 x 1080(Optional)
                         .start()
                 }
                 //End Image Picker
@@ -201,15 +209,14 @@ class ProjectDashboard : AppCompatActivity()
             }
         }
 
-        btnHome?.setOnClickListener(){
+        btnHome?.setOnClickListener() {
             onBackPressed()
         }
 
 
     }
 
-    private fun Save(desc : String, startTime : String, endTime : String, currDate : String )
-    {
+    private fun Save(desc: String, startTime: String, endTime: String, currDate: String) {
         //AFTER A TASK IS CREATED - SAVE IT TO THE DISK
         var context = applicationContext;
         val path = context.filesDir.path
@@ -255,7 +262,7 @@ class ProjectDashboard : AppCompatActivity()
 
         //ADDED FROM CREATE TASK CODE
         val taskInflater = LayoutInflater.from(applicationContext)
-        val viewTask = taskInflater.inflate(R.layout.create_task,null)
+        val viewTask = taskInflater.inflate(R.layout.create_task, null)
         val taskContainer = findViewById<RelativeLayout>(R.id.rel_layout)
 
         //GET_DIR
@@ -264,8 +271,10 @@ class ProjectDashboard : AppCompatActivity()
         //FILE_IN_QUESTION
         val file = File(letDirectory, "Tasks.txt")
 
-        if (file != null)
-        {
+        if (file != null) {
+            val database = Firebase.database
+            val dbReference = database.getReference("Tasks")
+
             val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
 
             var taskDescrip: String = ""
@@ -341,27 +350,28 @@ class ProjectDashboard : AppCompatActivity()
             taskAdapter.notifyDataSetChanged()
 
             btnAddTask?.isEnabled = true
-        }
-        else
-        {
+        } else {
             Toast.makeText(this, "Opened Project", Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun clickDatePicker()
-    {
+
+    private fun clickDatePicker() {
         val myCalendar = Calendar.getInstance()
         val year = myCalendar.get(Calendar.YEAR)
         val month = myCalendar.get(Calendar.MONTH)
         val day = myCalendar.get(Calendar.DAY_OF_MONTH)
 
-        val dpd = DatePickerDialog(this,
-            {_, selectedYear, selectedMonth, selectedDayOfMonth ->
+        val dpd = DatePickerDialog(
+            this,
+            { _, selectedYear, selectedMonth, selectedDayOfMonth ->
 
-                Toast.makeText(this, "Year was $selectedYear, month was ${selectedMonth+1}, " +
-                        "day was $selectedDayOfMonth", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this, "Year was $selectedYear, month was ${selectedMonth + 1}, " +
+                            "day was $selectedDayOfMonth", Toast.LENGTH_LONG
+                ).show()
 
-                val selectedDate = "$selectedDayOfMonth/${selectedMonth+1}/$selectedYear"
+                val selectedDate = "$selectedDayOfMonth/${selectedMonth + 1}/$selectedYear"
 
                 dateOnPopMenu = findViewById<TextView>(R.id.txtDateOnPopUp)
 
@@ -380,4 +390,5 @@ class ProjectDashboard : AppCompatActivity()
 
         dpd.show()
     }
+
 }
