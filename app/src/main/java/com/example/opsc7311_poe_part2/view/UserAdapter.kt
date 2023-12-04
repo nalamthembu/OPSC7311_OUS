@@ -27,16 +27,25 @@ class UserAdapter(val userList: ArrayList<ProjectData>): RecyclerView.Adapter<Us
     }
 
     // recyclerView
-    inner class UserViewHolder(val v:View, listener: onClickListener):RecyclerView.ViewHolder(v)
-    {
+    inner class UserViewHolder(val v: View, listener: onClickListener) : RecyclerView.ViewHolder(v) {
         val Name = v.findViewById<TextView>(R.id.project_Name)
         val DueDate = v.findViewById<TextView>(R.id.project_dueDate)
 
-        init
-        {
-            //OLD_CODE = adapterPosition
-            v.setOnClickListener{
-                listener.onItemClick(Name.text.toString(), DueDate.toString())
+        init {
+            v.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val projectData = userList[position]
+                    if (projectData != null) {
+                        val projectName = projectData.projectName
+                        val projectDueDate = projectData.projectDueDate
+
+                        // Check if projectName and projectDueDate are not null before using them
+                        if (projectName != null && projectDueDate != null) {
+                            listener.onItemClick(projectName, projectDueDate)
+                        }
+                    }
+                }
             }
         }
     }
