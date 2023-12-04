@@ -17,25 +17,15 @@ import com.example.opsc7311_poe_part2.view.TaskAdapter
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import android.content.Context
-import android.content.Intent
-import android.os.Handler
 import android.os.SystemClock
-import android.util.Log
 import android.view.Choreographer
 import android.widget.ImageView
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.Firebase
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
-import kotlin.system.exitProcess
-import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
-import kotlin.time.TimeSource
 
 class ProjectDashboard : AppCompatActivity() {
     var btnHome: ImageButton? = null
@@ -46,14 +36,13 @@ class ProjectDashboard : AppCompatActivity() {
     var btnAddTask: ImageButton? = null
 
     //Punch in System Global Vars
-    var btnPunchInClock: ImageButton? = null;
-    var clockHasStarted: Boolean = false;
-    var timeSpent: TextView? = null;
+    var btnOpenClockingSystem: ImageButton? = null;
+    var txtVTimeSpent: TextView? = null;
 
     private var running = false
     private var startTime: Long = 0
-    private val handler = Handler()
-    private var lastFrameTimeNanos: Long = 0
+    var elapsedTime : Long = 0;
+    var lastRecordedTime : String = "";
     //End of Punch In Global Vars
 
 
@@ -64,11 +53,14 @@ class ProjectDashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_dashboard)
 
+        // Start the frame callback
+        Choreographer.getInstance().postFrameCallback(frameCallback)
+
         //START OF PUNCH IN CODE
 
-        btnPunchInClock = findViewById(R.id.btnPunchInClock)
+        btnOpenClockingSystem = findViewById(R.id.btnPunchInClock)
 
-        btnPunchInClock?.setOnClickListener()
+        btnOpenClockingSystem?.setOnClickListener()
         {
             val taskInflater = LayoutInflater.from(applicationContext)
             val viewTask = taskInflater.inflate(R.layout.activity_clocking_system, null)
@@ -83,9 +75,24 @@ class ProjectDashboard : AppCompatActivity() {
             viewTask.layoutParams = params
             taskContainer.addView(viewTask)
 
-            var btnClockIn: Button = viewTask.findViewById(R.id.btnClockInOut);
+            var btnClockIn: Button = viewTask.findViewById(R.id.btnClockInOut)
+            txtVTimeSpent = viewTask.findViewById(R.id.txtTimeSpent)
 
-            timeSpent = viewTask.findViewById(R.id.txtTimeSpent);
+            btnClockIn.setOnClickListener()
+            {
+                if (running) {
+                    // Stop the stopwatch
+                    running = false
+                    btnClockIn.text = "Clock In"
+                    txtVTimeSpent?.text = lastRecordedTime
+                } else {
+                    // Start the stopwatch
+                    running = true
+                    btnClockIn.text = "Clock Out"
+                    startTime = SystemClock.uptimeMillis()
+                    txtVTimeSpent?.text = "0:00:000" // Reset to 0:00:000
+                }
+            }
 
         }
 
@@ -355,7 +362,6 @@ class ProjectDashboard : AppCompatActivity() {
         }
     }
 
-
     private fun clickDatePicker() {
         val myCalendar = Calendar.getInstance()
         val year = myCalendar.get(Calendar.YEAR)
@@ -391,4 +397,38 @@ class ProjectDashboard : AppCompatActivity() {
         dpd.show()
     }
 
+    private val frameCallback = object : Choreographer.FrameCallback {
+        override fun doFrame(frameTimeNanos: Long) {
+            if (running) {
+                elapsedTime = SystemClock.uptimeMillis() - startTime
+                val seconds = (elapsedTime / 1000).toInt()
+                val minutes = seconds / 60
+                val hours = minutes / 60
+
+                val timeString = String.format("%02d:%02d:%02d", hours, minutes % 60, seconds % 60)
+
+                // Update the last recorded time only if running is true
+                lastRecordedTime = timeString
+
+                // Update the displayed time
+                if (txtVTimeSpent != null)
+                    txtVTimeSpent?.text = timeString
+            }
+
+            // Continue the frame callback
+            Choreographer.getInstance().postFrameCallback(this)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Start the frame callback when the activity is resumed
+        Choreographer.getInstance().postFrameCallback(frameCallback)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Stop the frame callback when the activity is paused
+        Choreographer.getInstance().removeFrameCallback(frameCallback)
+    }
 }
