@@ -94,20 +94,16 @@ class ProjectDashboard : AppCompatActivity() {
                     txtVTimeSpent?.text = lastRecordedTime
 
                     //Save to database.
-                    dbReference.push()
+                    val customRecordId = "ClockInID" // Replace with the desired custom ID
 
-                    val pushRef = dbReference.push()
-                    pushRef.setValue(lastRecordedTime, object: DatabaseReference.CompletionListener
-                    {
-                        override fun onComplete(error: DatabaseError?, ref: DatabaseReference)
-                        {
-                            if(error == null)
-                            {
-                                Log.d("MyTag","Data Inserted successfully")
+// Save to database with a specific ID.
+                    val pushRef = dbReference.child(customRecordId)
+                    pushRef.setValue(lastRecordedTime, object : DatabaseReference.CompletionListener {
+                        override fun onComplete(error: DatabaseError?, ref: DatabaseReference) {
+                            if (error == null) {
+                                Log.d("MyTag", "Data Inserted successfully")
                                 Toast.makeText(this@ProjectDashboard, "Success: " + error?.message, Toast.LENGTH_SHORT).show()
-                            }
-                            else
-                            {
+                            } else {
                                 println("Failure: " + error.message)
                                 Toast.makeText(this@ProjectDashboard, "Failure: " + error.message, Toast.LENGTH_SHORT).show()
                             }
