@@ -15,6 +15,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import android.widget.ImageButton
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.github.mikephil.charting.components.Description
 
 class TimelineView : AppCompatActivity() {
 
@@ -45,6 +46,7 @@ class TimelineView : AppCompatActivity() {
         data.add(Entry(1000f,750f))
 
         linedata = LineDataSet(data,"Entries")
+        linechart.description.text = "Work"
         lineset = LineData(linedata)
 
         linechart.data = lineset
