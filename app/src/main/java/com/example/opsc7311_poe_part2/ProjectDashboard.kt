@@ -291,8 +291,7 @@ class ProjectDashboard : AppCompatActivity() {
     }
 
     private fun Load() {
-        //LOAD_FROM_DISK
-        var context = applicationContext;
+        var context = applicationContext
         val path = context.filesDir.path
 
         //ADDED FROM CREATE TASK CODE
@@ -306,87 +305,66 @@ class ProjectDashboard : AppCompatActivity() {
         //FILE_IN_QUESTION
         val file = File(letDirectory, "Tasks.txt")
 
-        if (file != null) {
-            val database = Firebase.database
-            val dbReference = database.getReference("Tasks")
+        if (file.exists()) {
+            try {
+                val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
 
-            val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+                var taskDescrip: String = ""
+                var taskCurrentDate: String = ""
+                var taskStartTime: String = ""
+                var taskEndTime: String = ""
 
-            var taskDescrip: String = ""
-            var taskCurrentDate: String = ""
-            var taskStartTime: String = ""
-            var taskEndTime: String = ""
+                var index: Int = 0
 
-            var index: Int = 0;
+                var SEPARATOR: Char = '#'
+                var END_OF_FILE: Char = '*'
 
-            var SEPERATOR: String = "#"
-            var END_OF_FILE: String = "*"
-
-            //TASK_DESCRIPTION
-            while (index < inputAsString.length) {
-                taskDescrip += inputAsString[index];
-
-                if (inputAsString[index].equals(SEPERATOR)) {
-                    break;
+                //TASK_DESCRIPTION
+                while (index < inputAsString.length && inputAsString[index] != SEPARATOR) {
+                    taskDescrip += inputAsString[index]
+                    index++
                 }
 
-                index++;
-            }
-
-            //CURRENT_DATE
-            while (index < inputAsString.length) {
-                taskCurrentDate += inputAsString[index];
-
-                if (inputAsString[index].equals(SEPERATOR)) {
-                    break;
+                //CURRENT_DATE
+                index++
+                while (index < inputAsString.length && inputAsString[index] != SEPARATOR) {
+                    taskCurrentDate += inputAsString[index]
+                    index++
                 }
 
-                index++;
-            }
-
-            //START_TIME
-            while (index < inputAsString.length) {
-                taskStartTime += inputAsString[index];
-
-                if (inputAsString[index].equals(SEPERATOR)) {
-                    break;
+                //START_TIME
+                index++
+                while (index < inputAsString.length && inputAsString[index] != SEPARATOR) {
+                    taskStartTime += inputAsString[index]
+                    index++
                 }
 
-                index++;
-            }
-
-            //END_TIME
-            while (index < inputAsString.length) {
-                taskEndTime += inputAsString[index];
-
-                if (inputAsString[index].equals(SEPERATOR) || inputAsString[index].equals(
-                        END_OF_FILE
-                    )
-                ) {
-                    break;
+                //END_TIME
+                index++
+                while (index < inputAsString.length && inputAsString[index] != SEPARATOR && inputAsString[index] != END_OF_FILE) {
+                    taskEndTime += inputAsString[index]
+                    index++
                 }
 
-                index++;
+                userList.clear()
+
+                //SET THESE
+                userList.add(TaskData(taskDescrip, taskCurrentDate, taskStartTime, taskEndTime))
+
+                runOnUiThread {
+                    taskAdapter.notifyDataSetChanged()
+                    btnAddTask?.isEnabled = true
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                runOnUiThread {
+                    Toast.makeText(this, "Error reading file", Toast.LENGTH_SHORT).show()
+                }
             }
-
-            userList.clear();
-
-            //SET THESE
-
-            userList.add(
-                TaskData(
-                    taskDescrip,
-                    taskCurrentDate,
-                    taskStartTime,
-                    taskEndTime
-                )
-            )
-
-            taskAdapter.notifyDataSetChanged()
-
-            btnAddTask?.isEnabled = true
         } else {
-            Toast.makeText(this, "Opened Project", Toast.LENGTH_LONG).show()
+            runOnUiThread {
+                Toast.makeText(this, "File does not exist", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
