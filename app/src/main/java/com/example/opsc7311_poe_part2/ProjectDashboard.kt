@@ -53,10 +53,10 @@ class ProjectDashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_dashboard)
 
+        //START OF PUNCH IN CODE
+
         // Start the frame callback
         Choreographer.getInstance().postFrameCallback(frameCallback)
-
-        //START OF PUNCH IN CODE
 
         btnOpenClockingSystem = findViewById(R.id.btnPunchInClock)
 
@@ -100,7 +100,6 @@ class ProjectDashboard : AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
         val projName = bundle!!.getString("project_name")
-        //val projDate = bundle!!.getString("project_date")
 
         btnHome = findViewById(R.id.ib_drawer)
         btnAddTask = findViewById(R.id.Add_Tasks)
@@ -219,8 +218,6 @@ class ProjectDashboard : AppCompatActivity() {
         btnHome?.setOnClickListener() {
             onBackPressed()
         }
-
-
     }
 
     private fun Save(desc: String, startTime: String, endTime: String, currDate: String) {
