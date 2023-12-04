@@ -17,7 +17,6 @@ import com.example.opsc7311_poe_part2.view.TaskAdapter
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import android.os.Handler
 import android.os.SystemClock
 import android.view.Choreographer
 import android.widget.ImageView
@@ -38,7 +37,7 @@ class ProjectDashboard : AppCompatActivity() {
 
     //Punch in System Global Vars
     var btnOpenClockingSystem: ImageButton? = null;
-    var timeSpent: TextView? = null;
+    var txtVTimeSpent: TextView? = null;
 
     private var running = false
     private var startTime: Long = 0
@@ -76,26 +75,22 @@ class ProjectDashboard : AppCompatActivity() {
             viewTask.layoutParams = params
             taskContainer.addView(viewTask)
 
-            var btnClockIn: Button = viewTask.findViewById(R.id.btnClockInOut);
-
-            timeSpent = viewTask.findViewById(R.id.txtTimeSpent);
+            var btnClockIn: Button = viewTask.findViewById(R.id.btnClockInOut)
+            txtVTimeSpent = viewTask.findViewById(R.id.txtTimeSpent)
 
             btnClockIn.setOnClickListener()
             {
-
-                running = !running;
-
                 if (running) {
                     // Stop the stopwatch
+                    running = false
                     btnClockIn.text = "Clock In"
-
-                } else if (!running){
+                    txtVTimeSpent?.text = lastRecordedTime
+                } else {
                     // Start the stopwatch
+                    running = true
                     btnClockIn.text = "Clock Out"
                     startTime = SystemClock.uptimeMillis()
-                    timeSpent?.text = startTime.toString()
-
-                    return@setOnClickListener;
+                    txtVTimeSpent?.text = "0:00:000" // Reset to 0:00:000
                 }
             }
 
@@ -404,19 +399,21 @@ class ProjectDashboard : AppCompatActivity() {
 
     private val frameCallback = object : Choreographer.FrameCallback {
         override fun doFrame(frameTimeNanos: Long) {
+            if (running) {
+                elapsedTime = SystemClock.uptimeMillis() - startTime
+                val seconds = (elapsedTime / 1000).toInt()
+                val minutes = seconds / 60
+                val hours = minutes / 60
 
-            elapsedTime = SystemClock.uptimeMillis() - startTime
-            val seconds = (elapsedTime / 1000).toInt()
-            val minutes = seconds / 60
-            val hours = minutes / 60
+                val timeString = String.format("%02d:%02d:%02d", hours, minutes % 60, seconds % 60)
 
-            val timeString = String.format("%02d:%02d:%02d", hours, minutes % 60, seconds % 60)
+                // Update the last recorded time only if running is true
+                lastRecordedTime = timeString
 
-            //Keeps the last recorded time in a formatted string.
-            lastRecordedTime = timeString;
-
-            if (timeSpent != null)
-                timeSpent?.text = timeString
+                // Update the displayed time
+                if (txtVTimeSpent != null)
+                    txtVTimeSpent?.text = timeString
+            }
 
             // Continue the frame callback
             Choreographer.getInstance().postFrameCallback(this)
