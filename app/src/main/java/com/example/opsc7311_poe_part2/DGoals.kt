@@ -51,7 +51,8 @@ class DGoals : AppCompatActivity() {
 
         //db
         val database = Firebase.database
-        val dbReference = database.getReference("DailyGoal")
+        val dbReference = database.getReference("DailyGoalMin")
+        val databaas = database.getReference("DailyGoalMax")
 
 
         //set values for displaying
@@ -99,7 +100,7 @@ class DGoals : AppCompatActivity() {
             val orders = MinMaxGoals(hours, mins)
 
             //dbReference.push().setValue(orders)
-            val pushRef = dbReference.push()
+            val pushRef = databaas.push()
             pushRef.setValue(orders, object :DatabaseReference.CompletionListener
             {
                 override fun onComplete(error: DatabaseError?, ref: DatabaseReference)
