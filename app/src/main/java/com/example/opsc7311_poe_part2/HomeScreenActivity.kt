@@ -60,7 +60,8 @@ class HomeScreenActivity : AppCompatActivity()
     private lateinit var userAdapter:UserAdapter
     private var dateOnPopMenu : TextView ?= null
 
-
+    //feed
+    var feedButton : ImageButton ?= null
 
     //Double Back
     private var doubleBack = false
@@ -96,6 +97,8 @@ class HomeScreenActivity : AppCompatActivity()
         userAdapter = UserAdapter(userList as ArrayList<ProjectData>)
         recv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         recv.adapter = userAdapter
+
+        feedButton = findViewById(R.id.FeedTokoloshe)
 
 
         userAdapter.setOnItemClickListener(object :UserAdapter.onClickListener { override fun onItemClick(itemName: String, itemDate :String)
@@ -147,6 +150,23 @@ class HomeScreenActivity : AppCompatActivity()
             true
         }
 
+        // feed tokoloshe
+        feedButton?.setOnClickListener()
+        {
+            val imageView = findViewById<ImageView>(R.id.ivImage)
+            Glide.with(this).load(R.drawable.tokoloshieapple).into(imageView)
+
+            val handler = Handler()
+
+            // Wait for 2 seconds and then execute the code inside postDelayed
+            handler.postDelayed({
+
+                val imageView = findViewById<ImageView>(R.id.ivImage)
+                Glide.with(this).load(R.drawable.tokoloshie).into(imageView)
+
+                println("Delayed code executed after 2 seconds")
+            }, 2000) // 2000 milliseconds = 2 seconds
+        }
         //Create Project Pop Up
         add_project?.setOnClickListener()
         {

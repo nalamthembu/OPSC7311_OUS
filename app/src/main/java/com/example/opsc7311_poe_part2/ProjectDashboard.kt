@@ -18,10 +18,13 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import android.os.SystemClock
+import android.util.Log
 import android.view.Choreographer
 import android.widget.ImageView
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.Firebase
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import java.io.File
 import java.io.FileInputStream
@@ -53,10 +56,14 @@ class ProjectDashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project_dashboard)
 
-        // Start the frame callback
-        Choreographer.getInstance().postFrameCallback(frameCallback)
+        //DATABASE
+        val database = Firebase.database
+        val dbReference = database.getReference("Clock in Times")
 
         //START OF PUNCH IN CODE
+
+        // Start the frame callback
+        Choreographer.getInstance().postFrameCallback(frameCallback)
 
         btnOpenClockingSystem = findViewById(R.id.btnPunchInClock)
 
@@ -85,12 +92,36 @@ class ProjectDashboard : AppCompatActivity() {
                     running = false
                     btnClockIn.text = "Clock In"
                     txtVTimeSpent?.text = lastRecordedTime
+
+                    //Save to database.
+                    dbReference.push()
+
+                    val pushRef = dbReference.push()
+                    pushRef.setValue(lastRecordedTime, object: DatabaseReference.CompletionListener
+                    {
+                        override fun onComplete(error: DatabaseError?, ref: DatabaseReference)
+                        {
+                            if(error == null)
+                            {
+                                Log.d("MyTag","Data Inserted successfully")
+                                Toast.makeText(this@ProjectDashboard, "Success: " + error?.message, Toast.LENGTH_SHORT).show()
+                            }
+                            else
+                            {
+                                println("Failure: " + error.message)
+                                Toast.makeText(this@ProjectDashboard, "Failure: " + error.message, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    })
+
                 } else {
                     // Start the stopwatch
                     running = true
                     btnClockIn.text = "Clock Out"
                     startTime = SystemClock.uptimeMillis()
                     txtVTimeSpent?.text = "0:00:000" // Reset to 0:00:000
+
+
                 }
             }
 
@@ -100,7 +131,6 @@ class ProjectDashboard : AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
         val projName = bundle!!.getString("project_name")
-        //val projDate = bundle!!.getString("project_date")
 
         btnHome = findViewById(R.id.ib_drawer)
         btnAddTask = findViewById(R.id.Add_Tasks)
@@ -219,8 +249,6 @@ class ProjectDashboard : AppCompatActivity() {
         btnHome?.setOnClickListener() {
             onBackPressed()
         }
-
-
     }
 
     private fun Save(desc: String, startTime: String, endTime: String, currDate: String) {

@@ -106,6 +106,17 @@
             app:srcCompat="@drawable/add_button" />
 
 
+        <ImageButton
+            android:id="@+id/FeedTokoloshe"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="357dp"
+            android:layout_marginEnd="160dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/baseline_emoji_food_beverage_24" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myRecycler"
             android:layout_width="match_parent"
