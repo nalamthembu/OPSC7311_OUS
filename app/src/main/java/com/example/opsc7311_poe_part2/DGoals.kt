@@ -8,7 +8,12 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.NumberPicker
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.Firebase
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 
 class DGoals : AppCompatActivity() {
     //Home Button
@@ -42,6 +47,12 @@ class DGoals : AppCompatActivity() {
         numPickMs.minValue = 0
         numPickMs.maxValue = 59
         numPickMs.setFormatter(numPickFormatter)
+
+        //db
+        val database = Firebase.database
+        val dbReference = database.getReference("DailyGoal")
+
+
         //set values for displaying
         var hours = 0
         var mins = 0
@@ -62,9 +73,29 @@ class DGoals : AppCompatActivity() {
 
         btnMin?.setOnClickListener(){
 
+            val orders = Orders(hours, mins)
+
+            dbReference.push().setValue(hours,mins)
+            val pushRef = dbReference.push()
+            pushRef.setValue(hours,mins, object :DatabaseReference.CompletionListener
+            {
+                override fun onComplete(error: DatabaseError?, ref: DatabaseReference)
+                {
+                    if(error == null)
+                    {
+                        Toast.makeText(this@DGoals, "Success: " + error?.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                    {
+                        println("Failure: " + error.message)
+                        Toast.makeText(this@DGoals, "Failure: " + error.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
         }
 
         btnMax?.setOnClickListener(){
+
 
         }
 

@@ -329,13 +329,6 @@ class ProjectDashboard : AppCompatActivity()
 
             //SET THESE
 
-            val taskDescrip_ = viewTask.findViewById<EditText>(R.id.tDescription)
-            val btnCurrentTaskDate_ = viewTask.findViewById<Button>(R.id.tCurrentDate)
-            val taskStartTime_ = viewTask.findViewById<EditText>(R.id.tStartTime)
-            val taskEndTime_ = viewTask.findViewById<EditText>(R.id.tEndTime)
-
-
-
             userList.add(
                 TaskData(
                     taskDescrip,
